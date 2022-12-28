@@ -67,3 +67,6 @@
 - 機能実装：12/31〜2/10 〆切
 - MVP：2/12 〆切
 - 本リリーズ：2/28 〆切
+
+■ figmaリンク
+https://www.figma.com/file/9xQmlGLsNxmqdIPTUQIdDc/omocha_city?node-id=0%3A1&t=eeBoKmXnmowpWPli-1
