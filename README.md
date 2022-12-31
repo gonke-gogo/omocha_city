@@ -70,3 +70,6 @@
 
 ■ figmaリンク
 https://www.figma.com/file/9xQmlGLsNxmqdIPTUQIdDc/omocha_city?node-id=0%3A1&t=eeBoKmXnmowpWPli-1
+
+■ ER図
+https://drive.google.com/file/d/1PTqmzyZj1jhYdE5FbPsYM9NUNjMO-RVh/view?usp=sharing
