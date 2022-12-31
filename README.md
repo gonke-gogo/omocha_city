@@ -55,6 +55,7 @@
       - 家族構成が表示できる（任意）
       - 自分の投稿一覧が確認できる
       - お気に入りした投稿一覧が確認できる
+  - 他のユーザーをフォロー・フォロー解除できる
 
 ■ なぜこのサービスを作りたいのか
 子供系のサービスで、おもちゃの口コミを見やすくまとめたものがあまりないと思ったため。
@@ -70,3 +71,6 @@
 
 ■ figmaリンク
 https://www.figma.com/file/9xQmlGLsNxmqdIPTUQIdDc/omocha_city?node-id=0%3A1&t=eeBoKmXnmowpWPli-1
+
+■ ER図(draw.io)
+https://drive.google.com/file/d/1PTqmzyZj1jhYdE5FbPsYM9NUNjMO-RVh/view?usp=sharing
