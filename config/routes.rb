@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'top_pages#top'
   get 'categories/index'
   get 'categories/edit'
   get 'favorites/create'
