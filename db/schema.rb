@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_012840) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_082437) do
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "toy_image"
+    t.string "toy_movie"
+    t.string "toy_name", null: false
+    t.text "content", null: false
+    t.integer "target_age"
+    t.integer "shop_link"
+    t.string "netshop_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -23,4 +37,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_012840) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end
