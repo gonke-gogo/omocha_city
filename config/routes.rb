@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/destroy'
+  get 'favorites/create'
+  get 'favorites/destroy'
+  resources :comments, only: %i[create destroy]
   resources :posts
   resources :users, only: %i[new create]
 end
