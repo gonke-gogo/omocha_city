@@ -1,0 +1,2 @@
+class FollowRelationshipsController < ApplicationController
+end
