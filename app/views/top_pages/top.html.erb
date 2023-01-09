@@ -1,0 +1,17 @@
+<div class='top-wrapper pt-24 text-center'>
+  <div class='text-center text-6xl font-bold'>
+    <h2>おもちゃシティーへようこそ！！</h2>
+  </div>
+  <ul class="flex justify-center bg-gray-300 my-5">
+    <li class="text-gray-700 text-center bg-gray-400 px-4 py-5 m-2 rounded">
+      <a href="#">ログインする</a>
+    </li>
+    <li class="text-gray-700 bg-gray-400 px-4 py-5 m-2 rounded">
+      <%= link_to '新規登録する', new_user_path %>
+    </li>
+  </ul>
+  <button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-5 my-10">
+    <%= link_to 'おもちゃを見にいく', posts_path %>
+  </button>
+</div>
+
