@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="w-full max-w-3xl m-auto w-4/5">
+    <%= form_with url: login_path, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4", local: true do |f| %>
+      <h2 class="text-3xl text-center">ログイン</h2>
+      <div class="mb-4">
+        <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_field :email, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="mb-6">
+        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.password_field :password, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="actions">
+            <%= f.submit 'ログイン', class: 'btn btn-primary my-5' %>
+        </div>
+        <div class="flex">
+          <%= link_to '登録ページへ', new_user_path, { class: "inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800" } %>
+          <a class="inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800 ml-5" href="#">
+            パスワードをお忘れた方はこちら
+          </a>
+        </div>
+      </div>
+    <% end %>
+    <p class="text-center text-gray-500 text-xs">
+      &copy;2020 Acme Corp. All rights reserved.
+    </p>
+  </div>
+</div>
