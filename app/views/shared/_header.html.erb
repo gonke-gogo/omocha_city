@@ -1,3 +1,7 @@
+<%
+=begin
+%>
+
 <header class="bg-white w-full h-20">
   <div class="flex items-center justify-between flex-wrap p-6">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -16,3 +20,18 @@
     </div>
   </div>  
 </header>
+<%
+=end
+%>
+
+<div class="navbar bg-accent">
+  <div class="flex-1">
+    <%= link_to 'おもちゃCITY', root_path, { class: "btn btn-ghost normal-case text-xl" } %>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><%= link_to '記事一覧', posts_path, {class: "btn btn-ghost"} %></li>
+      <li><%= link_to '新規登録', new_user_path, { class: "btn btn-ghost" } %></li>
+    </ul>
+  </div>
+</div>
