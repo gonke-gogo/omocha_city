@@ -4,7 +4,7 @@
       <h2 class="text-3xl text-center">ログイン</h2>
       <div class="mb-4">
         <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.text_field :email, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+        <%= f.email_field :email, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
       </div>
       <div class="mb-6">
         <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -22,8 +22,5 @@
         </div>
       </div>
     <% end %>
-    <p class="text-center text-gray-500 text-xs">
-      &copy;2020 Acme Corp. All rights reserved.
-    </p>
   </div>
 </div>

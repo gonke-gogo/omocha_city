@@ -1,3 +1,6 @@
+<%
+=begin
+%>
 <div class="container">
   <div class="row">
     <div class="">
@@ -25,5 +28,41 @@
         <%= link_to 'ログインページへ', login_path %>
       </div>
     </div>
+  </div>
+</div>
+<%
+=end
+%>
+
+<div class="container">
+  <div class="w-full max-w-3xl m-auto w-4/5">
+    <%= form_with model: @user, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4", local: true do |f| %>
+      <h2 class="text-3xl text-center">ユーザー登録</h2>
+      <div class="mb-4">
+        <%= f.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_field :name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.email_field :email, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="mb-6">
+        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.password_field :password, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="mb-6">
+        <%= f.label :password_confirmation, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.password_field :password_confirmation, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      </div>
+      <div class="flex items-center justify-between">
+      <%= f.submit '登録', class: 'btn btn-primary my-5' %>
+        <div class="flex">
+          <%= link_to 'ログインページ', login_path, { class: "inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800" } %>
+          <a class="inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800 ml-5" href="#">
+            パスワードをお忘れた方はこちら
+          </a>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
