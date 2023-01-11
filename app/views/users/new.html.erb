@@ -1,39 +1,3 @@
-<%
-=begin
-%>
-<div class="container">
-  <div class="row">
-    <div class="">
-      <h1>ユーザー登録</h1>
-      <%= form_with model: @user, local: true do |f| %>
-        <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class:"form-control" %>
-          </div>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
-        </div>
-        <%= f.submit "登録", class: "btn btn-primary my-4" %>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to 'ログインページへ', login_path %>
-      </div>
-    </div>
-  </div>
-</div>
-<%
-=end
-%>
-
 <div class="container">
   <div class="w-full max-w-3xl m-auto w-4/5">
     <%= form_with model: @user, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4", local: true do |f| %>
