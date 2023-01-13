@@ -1,0 +1,75 @@
+<%= form_with model: post, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="">
+    <%= f.label :toy_name, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.text_field :toy_name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+  </div>
+
+  <div class="">
+    <%= f.label :content, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.text_area :content, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', rows: 5 %>
+  </div>
+
+  <div class="">
+    <label for="sample" class="block text-gray-700 text-sm font-bold mb-2 mt-2">画像</label>
+    <input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple>
+  </div>
+  <div class="">
+    <label for="sample" class="block text-gray-700 text-sm font-bold mb-2 mt-2">動画</label>
+    <input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple>
+  </div>
+
+  <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">カテゴリー</label>
+  <div class="flex">
+    <div class="flex items-center">
+      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
+    </div>
+  </div>
+
+  <label for="" class="block text-gray-700 text-sm font-bold mb-2 mt-2">対象年齢</label>
+  <div class="flex">
+    <div class="flex items-center">
+      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">0~1歳</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">1~2歳</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">2~3歳</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">3~4歳</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">4~5歳</label>
+    </div>
+    <div class="flex items-center">
+      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">5~6歳</label>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <select class="block select border-black w-full max-w-xs">
+      <option disabled selected>購入した店舗を選んでください</option>
+      <option>トイザらス</option>
+      <option>アカチャンホンポ</option>
+      <option>西松屋</option>
+      <option>バースデー</option>
+      <option>トイプラネット</option>
+      <option>その他</option>
+    </select>
+  </div>
+
+  <%= f.submit '投稿する', class: 'btn btn-primary my-4' %>
+<% end %>

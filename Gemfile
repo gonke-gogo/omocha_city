@@ -69,3 +69,4 @@ end
 
 gem 'sorcery'
 gem 'pry-rails'
+gem 'faker'
