@@ -70,3 +70,4 @@ end
 gem 'sorcery'
 gem 'pry-rails'
 gem 'faker'
+gem 'rails-i18n'
