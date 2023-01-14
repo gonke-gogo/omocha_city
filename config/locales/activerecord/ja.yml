@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        name: '名前'
+      post:
+        toy_name: 'おもちゃの名前'
+        content: '本文'
+      user_session:
+        email: 'メールアドレス'
+        password: 'パスワード'
