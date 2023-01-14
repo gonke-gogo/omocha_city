@@ -4,10 +4,10 @@
   </div>
   <ul class="flex justify-center my-5">
     <li class="text-gray-700 text-center px-4 py-5 m-2 rounded">
-      <a href="#" class="btn hover:opacity-75">ログインする</a>
+      <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
     </li>
     <li class="text-gray-700  px-4 py-5 m-2 rounded">
-      <%= link_to '新規登録する', new_user_path, { class: "btn hover:opacity-75" }%>
+      <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
     </li>
   </ul>
   <button class=" hover: text-white rounded px-4 py-5 my-10">
