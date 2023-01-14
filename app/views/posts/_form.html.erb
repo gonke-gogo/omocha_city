@@ -11,9 +11,15 @@
   </div>
 
   <div class="">
-    <label for="sample" class="block text-gray-700 text-sm font-bold mb-2 mt-2">画像</label>
-    <input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple>
+    <%= f.label :toy_image, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.file_field :toy_image, class: "mb-5", accept: 'image/*' %>
+    <%= f.hidden_field :toy_image_cache %>
   </div>
+  <div class='mt-3 mb-3'>
+    <%= image_tag post.toy_image.url,
+                  size: '300x200' %>
+  </div>
+
   <div class="">
     <label for="sample" class="block text-gray-700 text-sm font-bold mb-2 mt-2">動画</label>
     <input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple>
