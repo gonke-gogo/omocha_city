@@ -35,6 +35,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy!
+    respond_to do |format|
+      format.html { redirect_to posts_path, warning: "投稿を削除しました", status: :see_other }
+      format.json { head :no_content }
+    end
   end
 
   private
