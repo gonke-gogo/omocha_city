@@ -1,0 +1,8 @@
+<ul class='flex float-right'>
+  <li class="list-inline-item">
+    <%= link_to '編集', edit_post_path(post), { class: "btn btn-primary" } %>
+  </li>
+  <li class="list-inline-item ml-4">
+    <%= link_to '削除', post_path(post), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+  </li>
+</ul>
