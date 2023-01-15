@@ -18,6 +18,7 @@
           </div>
           <%= simple_format(@post.content, class: "mt-5") %>
         </div>
+        <%= render 'crud_menus', post: @post %>
       </article>
     </div>
   </div>
