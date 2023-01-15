@@ -1,15 +1,17 @@
-<div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3">
-  <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
-  <div class="card-body">
-    <h2 class="card-title"><%= post.toy_name %></h2>
-    <p><%= post.content %></p>
-    <div class="flex">
-      <div class="avatar">
-        <div class="w-12 rounded-full">
-          <img src="https://placeimg.com/192/192/people" />
+<%= link_to (post_path(post)) do %>
+  <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3">
+    <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
+    <div class="card-body">
+      <h2 class="card-title"><%= post.toy_name %></h2>
+      <p><%= post.content %></p>
+      <div class="flex">
+        <div class="avatar">
+          <div class="w-12 rounded-full">
+            <img src="https://placeimg.com/192/192/people" />
+          </div>
         </div>
+        <p class="card-title ml-5"><%= post.user.name %></p>
       </div>
-      <p class="card-title ml-5"><%= post.user.name %></p>
     </div>
   </div>
-</div>
+<% end %>

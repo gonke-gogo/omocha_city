@@ -1,4 +1,24 @@
-<div>
-  <h1 class="font-bold text-4xl">Posts#show</h1>
-  <p>Find me in app/views/posts/show.html.erb</p>
+<div class="container pt-5 m-auto text-center">
+  <div class="">
+    <div class="">
+    <!-- 投稿内容 -->
+    <h2 class="text-4xl font-bold my-4"><%= @post.toy_name %></h2>
+      <article class="">
+        <div class="">
+          <div class='border-b-4 border-black	py-5'>
+            <div class=''>
+              <%= image_tag @post.toy_image.url, class: 'm-auto', size: '300x200' %>
+            </div>
+            <div class=''>
+              <ul class="">
+                <li class="text-right">by <%= @post.user.name %></li>
+                <li class="text-right"><%= l @post.created_at, format: :long  %></li>
+              </ul>
+            </div>
+          </div>
+          <%= simple_format(@post.content, class: "mt-5") %>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>
