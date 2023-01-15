@@ -1,4 +1,4 @@
-<%= form_with model: post, local: true do |f| %>
+<%= form_with model: post, class: "my-5", local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="">
     <%= f.label :toy_name, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: %i[index]
+  before_action :set_post, only: %i[edit destroy update]
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc)
   end
@@ -22,10 +23,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    if @post.update(post_params)
+      redirect_to @post, success: "投稿を編集しました。"
+    else
+      flash.now[:error] = '編集に失敗しました'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -35,5 +41,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache)
+  end
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
   end
 end
