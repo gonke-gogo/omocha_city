@@ -1,5 +1,5 @@
 <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3">
-  <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+  <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
   <div class="card-body">
     <h2 class="card-title"><%= post.toy_name %></h2>
     <p><%= post.content %></p>
