@@ -20,8 +20,9 @@
           </a>
         </li>
         <li class="ml-5">
+          <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }  do %>
             <i class="fa-solid fa-trash"></i>
-            <%= link_to '削除', comment_path(comment), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+          <% end %>
         </li>
       </ul>
     </td>
