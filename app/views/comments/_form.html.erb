@@ -1,0 +1,10 @@
+<div class="py-5">
+  <div class="text-left">
+    <%= form_with model: comment, url: [post, comment], local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :content %>
+      <%= f.text_area :content, class: 'form-control w-1/2 mb-3', row: 4, placeholder: 'コメントをする' %>
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
