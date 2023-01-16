@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
+    respond_to do |format|
+      format.html { redirect_to request.referer, warning: "コメントを削除しました", status: :see_other }
+      format.json { head :no_content }
+    end
   end
 
   private

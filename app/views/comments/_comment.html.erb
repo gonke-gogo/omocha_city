@@ -20,9 +20,8 @@
           </a>
         </li>
         <li class="ml-5">
-          <a href="#" class='js-delete-comment-button' data-comment-id="<%= comment.id %>">
             <i class="fa-solid fa-trash"></i>
-          </a>
+            <%= link_to '削除', comment_path(comment), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
         </li>
       </ul>
     </td>
