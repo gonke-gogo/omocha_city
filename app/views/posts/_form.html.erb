@@ -21,8 +21,8 @@
   </div>
 
   <div class="">
-    <label for="sample" class="block text-gray-700 text-sm font-bold mb-2 mt-2">動画</label>
-    <input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple>
+    <%= f.label :toy_movie %>
+    <%= f.file_field :toy_movie, :accept => 'video/*' %>
   </div>
 
   <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">カテゴリー</label>
