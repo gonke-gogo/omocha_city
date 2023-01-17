@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   mount_uploader :toy_image, ToyImageUploader
+  mount_uploader :toy_movie, ToyMovieUploader
   belongs_to :user
   has_many :comments, dependent: :destroy
 

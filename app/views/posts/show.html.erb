@@ -8,6 +8,10 @@
               <%= image_tag @post.toy_image.url, class: 'm-auto', size: '300x200' %>
             </div>
             <div class=''>
+              <%= video_tag(@post.toy_movie.to_s, :controls => true)  %>
+            </div>
+
+            <div class=''>
               <ul class="">
                 <li class="text-right">by <%= @post.user.name %></li>
                 <li class="text-right"><%= l @post.created_at, format: :long  %></li>
