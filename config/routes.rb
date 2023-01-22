@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create destroy]
   resources :posts do
     resources :comments, only: %i[create destroy], shallow: true
+    collection do
+      get :favorites
+    end
   end
+  resources :favorites, only: %i[create destroy]
   resources :users, only: %i[new create]
 end

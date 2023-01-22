@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
   before_action :set_post, only: %i[edit destroy update]
+  
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc)
   end
@@ -42,6 +43,10 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_path, warning: "投稿を削除しました", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def favorites
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
   end
 
   private

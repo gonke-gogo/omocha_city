@@ -1,0 +1,7 @@
+<div class="container flex flex-wrap justify-around my-4">
+  <% if @favorite_posts.present? %>
+    <%= render @favorite_posts %>
+  <% else %>
+    <p>お気に入りしているおもちゃはありません</p>
+  <% end %>
+</div>
