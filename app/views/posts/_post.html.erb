@@ -3,7 +3,10 @@
     <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
     <div class="card-body">
       <h2 class="card-title"><%= post.toy_name %></h2>
-      <p><%= post.content %></p>
+      <div class="flex">
+        <p><%= post.content %></p>
+        <%= render 'favorite_button', post: post %>
+      </div>
       <div class="flex">
         <div class="avatar">
           <div class="w-12 rounded-full">
