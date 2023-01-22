@@ -20,7 +20,7 @@ class User < ApplicationRecord
     favorite_posts << post
   end
 
-  def unbookmark(post)
+  def unfavorite(post)
     favorite_posts.destroy(post)
   end
 

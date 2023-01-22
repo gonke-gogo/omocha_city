@@ -31,7 +31,11 @@
           <p>＜概要＞</p>
           <%= simple_format(@post.content, class: "mt-5") %>
         </div>
-        <%= render 'crud_menus', post: @post if current_user.own?(@post) %>
+        <% if current_user.own?(@post) %>
+          <%= render 'crud_menus', post: @post %>
+        <% else %>
+          <%= render 'favorite_button', post: @post %>
+        <% end %>
       </article>
   
   <div class="mt-10">

@@ -3,9 +3,9 @@
     <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
     <div class="card-body">
       <h2 class="card-title"><%= post.toy_name %></h2>
-      <div class="flex">
+      <div class="flex justify-between">
         <p><%= post.content %></p>
-        <%= render 'favorite_button', post: post %>
+        <%= render 'favorite_button', post: post unless current_user.own?(post) %>
       </div>
       <div class="flex">
         <div class="avatar">
