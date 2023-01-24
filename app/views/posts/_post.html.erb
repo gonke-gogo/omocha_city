@@ -10,9 +10,7 @@
       <div class="flex">
         <div class="avatar">
           <div class="w-12 rounded-full">
-            <%= link_to others_profile_path(post.user.id) do %>
-              <%= image_tag post.user.avatar.url %>
-            <% end %>
+            <%= render 'shared/avatar_link', object: post %>
           </div>
         </div>
         <ul class="flex">
