@@ -1,0 +1,7 @@
+<% unless current_user.own?(object) %>
+  <%= link_to others_profile_path(object.user.id) do %>
+    <%= image_tag object.user.avatar.url, class: "w-12 rounded-full" %>
+  <% end %>
+<% else %>
+  <%= image_tag object.user.avatar.url, class: "w-12 rounded-full" %>
+<% end %>

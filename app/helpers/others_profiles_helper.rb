@@ -1,0 +1,2 @@
+module OthersProfilesHelper
+end

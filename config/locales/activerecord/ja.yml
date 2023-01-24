@@ -10,6 +10,8 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         name: '名前'
+        introduction: '自己紹介'
+        avatar: 'プロフィール画像'
       post:
         toy_name: 'おもちゃの名前'
         content: '本文'

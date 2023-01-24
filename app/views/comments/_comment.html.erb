@@ -1,4 +1,7 @@
 <tr id="comment-<%= comment.id %>" class="">
+  <td class="w-20 rounded-full">
+    <%= render 'shared/avatar_link', object: comment %>
+  </td>
   <td>
     <h3 class="small"><%= comment.user.name %></h3>
     <div id="js-comment-<%= comment.id %>">
