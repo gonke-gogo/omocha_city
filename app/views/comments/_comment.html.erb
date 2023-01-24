@@ -1,6 +1,12 @@
 <tr id="comment-<%= comment.id %>" class="">
   <td class="w-20 rounded-full">
-    <%= image_tag comment.user.avatar.url, class: "w-12 rounded-full" %>
+    <% unless current_user.own?(comment) %>
+      <%= link_to others_profile_path(comment.user.id) do %>
+        <%= image_tag comment.user.avatar.url, class: "w-12 rounded-full" %>
+      <% end %>
+    <% else %>
+      <%= image_tag comment.user.avatar.url, class: "w-12 rounded-full" %>
+    <% end %>
   </td>
   <td>
     <h3 class="small"><%= comment.user.name %></h3>

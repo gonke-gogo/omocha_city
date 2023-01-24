@@ -7,7 +7,17 @@
       <li><%= link_to '記事一覧', posts_path, {class: "btn btn-ghost"} %></li>
       <li><%= link_to '記事投稿', new_post_path, { class: "btn btn-ghost" } %></li>
       <li><%= link_to 'お気に入り記事', favorites_posts_path, { class: "btn btn-ghost" } %></li>
-      <li><%= link_to 'ログアウト', logout_path, class: "btn btn-ghost", method: :delete %></li>
+      <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <%= image_tag current_user.avatar.url %>
+        </div>
+      </label>
+      <ul tabindex="0" class="menu  dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-36">
+        <li class="justify-center"><%= link_to 'プロフィール', profile_path %></li>
+        <li class="justify-center"><%= link_to 'ログアウト', logout_path %></li>
+      </ul>
+    </div>
     </ul>
   </div>
 </div>
