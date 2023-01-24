@@ -1,5 +1,5 @@
 <%= link_to (post_path(post)) do %>
-  <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3">
+  <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3 hover:opacity-75">
     <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
     <div class="card-body">
       <h2 class="card-title"><%= post.toy_name %></h2>
