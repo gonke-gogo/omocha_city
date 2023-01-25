@@ -21,21 +21,18 @@
   </div>
 
   <div class="">
-    <%= f.label :toy_movie %>
+    <%= f.label :toy_movie, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.file_field :toy_movie, :accept => 'video/*' %>
   </div>
 
-  <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">カテゴリー</label>
-  <div class="flex">
-    <div class="flex items-center">
-      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-      <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-    </div>
-    <div class="flex items-center">
-      <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-      <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
-    </div>
-  </div>
+  <%# カテゴリー %>
+  <%= f.label :category, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+    <%= category.label do %>
+    <%= category.check_box %>
+    <%= category.text %>
+    <% end %>
+  <% end %>
 
   <label for="" class="block text-gray-700 text-sm font-bold mb-2 mt-2">対象年齢</label>
   <div class="flex">

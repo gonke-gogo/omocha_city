@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie)
+    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, category_ids: [])
   end
 
   def set_post
