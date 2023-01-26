@@ -3,6 +3,13 @@
     <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
     <div class="card-body">
       <h2 class="card-title"><%= post.toy_name %></h2>
+      <% unless post.categories.blank? %>
+        <div class="flex">
+          <% post.categories.each do |category| %>
+            <div class="badge badge-primary m-1"><%= category.category_name %></div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="flex justify-between">
         <p><%= post.content %></p>
         <%= render 'favorite_button', post: post unless current_user.own?(post) %>

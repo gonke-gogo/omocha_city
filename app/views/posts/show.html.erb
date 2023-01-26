@@ -30,6 +30,13 @@
           </div>
           <p>＜概要＞</p>
           <%= simple_format(@post.content, class: "mt-5") %>
+          <% unless @post.categories.blank? %>
+            <div class="flex justify-center">
+              <% @post.categories.each do |category| %>
+                <p class="badge badge-primary m-4"><%= category.category_name %></p>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <% if current_user.own?(@post) %>
           <%= render 'crud_menus', post: @post %>
