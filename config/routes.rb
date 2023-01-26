@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'categories/edit'
   get 'favorites/create'
   get 'favorites/destroy'
+  get 'posts/category/:id', to: 'posts#category'
+
 
   resources :comments, only: %i[create destroy]
   resources :posts do

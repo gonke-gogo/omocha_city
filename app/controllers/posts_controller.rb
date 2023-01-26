@@ -49,6 +49,11 @@ class PostsController < ApplicationController
     @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
   end
 
+  def category
+    @category = Category.find(params[:id])
+    @category_posts = Post.includes(:categories).where(post_categories: { category_id: @category })
+  end
+
   private
 
   def post_params
