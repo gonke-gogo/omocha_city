@@ -3,7 +3,6 @@
     <%= render 'shared/avatar_link', object: comment %>
   </td>
   <td>
-    <h3 class="small"><%= comment.user.name %></h3>
     <div id="js-comment-<%= comment.id %>">
       <%= simple_format(comment.content) %>
     </div>

@@ -1,23 +1,24 @@
-<%= link_to (post_path(post)) do %>
-  <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3 hover:opacity-75">
-    <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
+<%= link_to (post_path(id: post.id)), class: "hover:opacity-75" do %>
+  <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3 ">
+      <%= image_tag post.toy_image_url, class:"h-52", size: '300x200' %>
     <div class="card-body">
       <h2 class="card-title"><%= post.toy_name %></h2>
       <% unless post.categories.blank? %>
         <div class="flex">
           <% post.categories.each do |category| %>
-            <div class="badge badge-primary m-1"><%= category.category_name %></div>
+            <div class="badge badge-primary m-1">
+              <%= category.category_name %>
+            </div>
           <% end %>
         </div>
       <% end %>
       <div class="flex justify-between">
         <p><%= post.content %></p>
-        <%= render 'favorite_button', post: post unless current_user.own?(post) %>
       </div>
       <div class="flex">
         <div class="avatar">
           <div class="w-12 rounded-full">
-            <%= render 'shared/avatar_link', object: post %>
+            <%= image_tag post.user.avatar.url %>
           </div>
         </div>
         <ul class="flex">
