@@ -3,7 +3,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit destroy update]
   
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    @categories = Category.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc)
+    else
+      @posts = Post.all.includes([:user, :categories]).order(created_at: :desc)
+    end
   end
 
   def new
@@ -47,11 +53,6 @@ class PostsController < ApplicationController
 
   def favorites
     @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
-  end
-
-  def category
-    @category = Category.find(params[:id])
-    @category_posts = Post.includes(:categories).where(post_categories: { category_id: @category })
   end
 
   private
