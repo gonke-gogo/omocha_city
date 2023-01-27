@@ -10,3 +10,11 @@
      object-fit: cover; /* 縦横比維持しつつトリミング */
   border-radius: 50%;
 }
+
+.profile-img {
+  width: 200px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover; /* 縦横比維持しつつトリミング */
+  border-radius: 50%;
+}
