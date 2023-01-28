@@ -15,6 +15,9 @@ ja:
       post:
         toy_name: 'おもちゃの名前'
         content: '本文'
+        toy_image: 'おもちゃの写真'
+        toy_movie: 'おもちゃの動画'
+        category: 'カテゴリー'
       user_session:
         email: 'メールアドレス'
         password: 'パスワード'

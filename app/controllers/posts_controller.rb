@@ -1,9 +1,16 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
   before_action :set_post, only: %i[edit destroy update]
+  before_action :category_all, only: %i[index new show edit favorites]
   
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    @categories = Category.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc)
+    else
+      @posts = Post.all.includes([:user, :categories]).order(created_at: :desc)
+    end
   end
 
   def new
@@ -52,10 +59,14 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie)
+    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, category_ids: [])
   end
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def category_all
+    @category_all = Category.all
   end
 end

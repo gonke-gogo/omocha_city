@@ -4,32 +4,37 @@
         <h2 class="text-4xl font-bold my-4"><%= @post.toy_name %></h2>
         <div class="">
           <div class='border-b-4 border-black	py-5'>
-          <% if @post.toy_movie.present? %>
-            <div class="flex m-auto justify-around">
-              <div class='w-2/5'>
-                <p>画像</p>
-                <%= image_tag @post.toy_image.url, class: '', size: '300x200' %>
+            <% if @post.toy_movie.present? %>
+              <div class="flex m-auto justify-around">
+                <div class='w-2/5'>
+                  <p>画像</p>
+                  <%= image_tag @post.toy_image.url, class: '', size: '300x200' %>
+                </div>
+                <div class='w-2/5'>
+                  <p>動画</p>
+                  <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
+                </div>
               </div>
-              <div class='w-2/5'>
-                <p>動画</p>
-                <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
+            <% else %>
+              <div class='w-2/3 m-auto'>
+                <%= image_tag @post.toy_image.url, class: 'justify-center m-auto', size: '300x200' %>
               </div>
-            </div>
-          <% else %>
-            <div class='w-2/3 m-auto'>
-              <%= image_tag @post.toy_image.url, class: 'justify-center m-auto', size: '300x200' %>
+            <% end %>
+          </div>
+          <div class="justify-center m-5 flex">
+            <%= render 'shared/avatar_link', object: @post %>
+          </div>
+          <p>投稿日：<%= l @post.created_at, format: :long  %></p>
+          <%= simple_format(@post.content, class: "mt-5") %>
+          <% unless @post.categories.blank? %>
+            <div class="flex justify-center my-5">
+              <% @post.categories.each do |category| %>
+                <div class="badge badge-primary m-1">
+                  <%= link_to category.category_name ,posts_path(category_id: category.id) %>
+                </div>
+              <% end %>
             </div>
           <% end %>
-
-            <div class=''>
-              <ul class="">
-                <li class="text-right">by <%= @post.user.name %></li>
-                <li class="text-right"><%= l @post.created_at, format: :long  %></li>
-              </ul>
-            </div>
-          </div>
-          <p>＜概要＞</p>
-          <%= simple_format(@post.content, class: "mt-5") %>
         </div>
         <% if current_user.own?(@post) %>
           <%= render 'crud_menus', post: @post %>
