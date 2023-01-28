@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
   before_action :set_post, only: %i[edit destroy update]
+  before_action :category_all, only: %i[index new show edit favorites]
   
   def index
     @categories = Category.all
@@ -63,5 +64,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def category_all
+    @category_all = Category.all
   end
 end

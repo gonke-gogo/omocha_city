@@ -20,7 +20,6 @@
                 <%= image_tag @post.toy_image.url, class: 'justify-center m-auto', size: '300x200' %>
               </div>
             <% end %>
-                <p class="text-right"><%= l @post.created_at, format: :long  %></p>
           </div>
           <div class="justify-center m-5 flex">
             <%= render 'shared/avatar_link', object: @post %>
