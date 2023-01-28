@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   get 'logout', to: 'user_sessions#destroy'
-  get 'categories/index'
-  get 'categories/edit'
-
 
   resources :comments, only: %i[create destroy]
   resources :posts do
@@ -14,7 +11,7 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
-  
+  resources :categories, only: %i[index]
   resources :favorites, only: %i[create destroy]
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
