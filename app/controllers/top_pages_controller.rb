@@ -3,7 +3,6 @@ class TopPagesController < ApplicationController
   before_action :category_all
 
   def top
-    @categories = Category.all
     if params[:category_id]
       @category = Category.find(params[:category_id])
       @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc).page(params[:page])
