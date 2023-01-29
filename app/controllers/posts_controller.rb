@@ -4,12 +4,11 @@ class PostsController < ApplicationController
   before_action :category_all, only: %i[index new show edit favorites]
   
   def index
-    @categories = Category.all
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc)
+      @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc).page(params[:page])
     else
-      @posts = Post.all.includes([:user, :categories]).order(created_at: :desc)
+      @posts = Post.all.includes([:user, :categories]).order(created_at: :desc).page(params[:page])
     end
   end
 
@@ -53,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private
