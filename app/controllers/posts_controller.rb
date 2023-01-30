@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
   before_action :set_post, only: %i[edit destroy update]
-  before_action :category_all, only: %i[index new show edit favorites]
+  before_action :category_all, only: %i[index new show edit favorites ]
+  before_action :target_age_all, only: %i[index new show edit favorites ]
   
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
       @posts = @category.posts.includes([:user, :categories]).order(created_at: :desc).page(params[:page])
+    elsif params[:target_age_id]
+      @target_age = TargetAge.find(params[:target_age_id])
+      @posts = @target_age.posts.includes([:user, :target_ages]).order(created_at: :desc).page(params[:page])
     else
       @posts = Post.all.includes([:user, :categories]).order(created_at: :desc).page(params[:page])
     end
@@ -21,6 +25,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, success: "おもちゃが投稿されました！"
     else
+      @category_all = Category.all
       flash.now[:danger] = "投稿に失敗しました"
       render :new, status: :unprocessable_entity
     end
@@ -67,5 +72,9 @@ class PostsController < ApplicationController
 
   def category_all
     @category_all = Category.all
+  end
+
+  def target_age_all
+    @target_age_all = TargetAge.all
   end
 end
