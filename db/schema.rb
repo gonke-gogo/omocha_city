@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_131156) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_060838) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.datetime "created_at", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_131156) do
     t.index ["following_id"], name: "index_follow_relationships_on_following_id"
   end
 
+  create_table "post_ages", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "target_age_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_ages_on_post_id"
+    t.index ["target_age_id"], name: "index_post_ages_on_target_age_id"
+  end
+
   create_table "post_categories", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "category_id", null: false
@@ -69,6 +78,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_131156) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "target_ages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -87,6 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_131156) do
   add_foreign_key "favorites", "users"
   add_foreign_key "follow_relationships", "users", column: "follower_id"
   add_foreign_key "follow_relationships", "users", column: "following_id"
+  add_foreign_key "post_ages", "posts"
+  add_foreign_key "post_ages", "target_ages"
   add_foreign_key "post_categories", "categories"
   add_foreign_key "post_categories", "posts"
   add_foreign_key "posts", "users"
