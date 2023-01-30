@@ -74,3 +74,4 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem "dartsass-rails", "~> 0.4.1"
 gem "kaminari"
+gem 'ransack'
