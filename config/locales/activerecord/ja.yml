@@ -17,7 +17,8 @@ ja:
         content: '本文'
         toy_image: 'おもちゃの写真'
         toy_movie: 'おもちゃの動画'
-        category: 'カテゴリー'
+        category: 'カテゴリー(任意)'
+        target_age: '対象年齢(任意)'
       user_session:
         email: 'メールアドレス'
         password: 'パスワード'

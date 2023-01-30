@@ -28,10 +28,19 @@
           <p>投稿日：<%= l @post.created_at, format: :long  %></p>
           <%= simple_format(@post.content, class: "mt-5") %>
           <% unless @post.categories.blank? %>
-            <div class="flex justify-center my-5">
+            <div class="flex justify-center mt-5">
               <% @post.categories.each do |category| %>
                 <div class="badge badge-primary m-1">
                   <%= link_to category.category_name ,posts_path(category_id: category.id) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <% unless @post.target_ages.blank? %>
+            <div class="flex justify-center mt-2">
+              <% @post.target_ages.each do |target_age| %>
+                <div class="badge badge-secondary m-1">
+                  <%= link_to target_age.name ,posts_path(target_age_id: target_age.id) %>
                 </div>
               <% end %>
             </div>
