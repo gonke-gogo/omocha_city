@@ -18,6 +18,7 @@ ja:
         toy_image: 'おもちゃの写真'
         toy_movie: 'おもちゃの動画'
         category: 'カテゴリー'
+        target_age: '対象年齢'
       user_session:
         email: 'メールアドレス'
         password: 'パスワード'

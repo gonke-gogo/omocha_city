@@ -34,6 +34,16 @@
     <% end %>
   <% end %>
 
+  <%# 対象年齢 %>
+  <%= f.label :target_age, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+  <%= f.collection_check_boxes(:target_age_ids, TargetAge.all, :id, :name) do |age| %>
+    <%= age.label do %>
+    <%= age.check_box %>
+    <%= age.text %>
+    <% end %>
+  <% end %>
+
+
   <label for="" class="block text-gray-700 text-sm font-bold mb-2 mt-2">対象年齢</label>
   <div class="flex">
     <div class="flex items-center">
