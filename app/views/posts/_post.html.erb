@@ -12,6 +12,15 @@
           <% end %>
         </div>
       <% end %>
+      <% unless post.target_ages.blank? %>
+        <div class="flex">
+          <% post.target_ages.each do |age| %>
+            <div class="badge badge-secondary m-1">
+              <%= age.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="w-full p-5 border-t-2">
       <div class="flex">
