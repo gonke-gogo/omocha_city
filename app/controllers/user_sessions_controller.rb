@@ -1,5 +1,8 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :category_all
+  before_action :target_age_all
+  before_action :set_search
 
   def new; end
 

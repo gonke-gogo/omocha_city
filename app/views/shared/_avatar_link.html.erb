@@ -1,4 +1,4 @@
-<% unless current_user.own?(object) %>
+<% unless logged_in? && current_user.own?(object) %>
   <div class="m-2 hover:opacity-75">
     <%= link_to others_profile_path(object.user.id) do %>
       <%= image_tag object.user.avatar.url, class: "avatar-img" %>

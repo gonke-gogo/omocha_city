@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :category_all, only: %i[show edit]
+  before_action :target_age_all, only: %i[show edit]
+  before_action :set_search, only: %i[show edit]
+  
   def new
     @user = User.new
   end
