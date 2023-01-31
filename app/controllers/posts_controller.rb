@@ -3,18 +3,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit destroy update]
   before_action :category_all, only: %i[index new show edit favorites ]
   before_action :target_age_all, only: %i[index new show edit favorites ]
+  before_action :set_search, only: %i[index new show edit]
   
-  def index
-    if params[:category_id]
-      @category = Category.find(params[:category_id])
-      @posts = @category.posts.includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
-    elsif params[:target_age_id]
-      @target_age = TargetAge.find(params[:target_age_id])
-      @posts = @target_age.posts.includes([:user, :target_ages]).order(created_at: :desc).page(params[:page])
-    else
-      @posts = Post.all.includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
-    end
-  end
+  def index; end
 
   def new
     @post = Post.new
@@ -57,7 +48,8 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page])
+    @q = current_user.favorite_posts.ransack(params[:q])
+    @favorite_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private
@@ -76,5 +68,18 @@ class PostsController < ApplicationController
 
   def target_age_all
     @target_age_all = TargetAge.all
+  end
+
+  def set_search
+    @q = Post.ransack(params[:q])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
+    elsif params[:target_age_id]
+      @target_age = TargetAge.find(params[:target_age_id])
+      @posts = @target_age.posts.includes([:user, :target_ages]).order(created_at: :desc).page(params[:page])
+    else
+      @posts = @q.result(distinct: true).includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
+    end
   end
 end
