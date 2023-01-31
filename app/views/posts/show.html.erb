@@ -46,10 +46,10 @@
             </div>
           <% end %>
         </div>
-        <% if current_user.own?(@post) %>
+        <% if logged_in? && current_user.own?(@post) %>
           <%= render 'crud_menus', post: @post %>
         <% else %>
-          <%= render 'favorite_button', post: @post %>
+          <%= render 'favorite_button', post: @post if logged_in? %>
         <% end %>
       </article>
   

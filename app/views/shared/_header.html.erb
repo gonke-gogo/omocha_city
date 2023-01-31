@@ -2,6 +2,11 @@
   <div class="flex-1">
     <%= link_to 'おもちゃCITY', root_path, { class: "btn btn-ghost normal-case text-xl" } %>
   </div>
+  <% unless current_page?(favorites_posts_path) %>
+    <%= render '/posts/search_form', url: posts_path %>
+  <% else %>
+    <%= render '/posts/search_form', url: favorites_posts_path %>
+  <% end %>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <li class="dropdown">
