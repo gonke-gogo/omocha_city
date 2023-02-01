@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :categories, only: %i[index]
   resources :favorites, only: %i[create destroy]
   resources :users, only: %i[new create show] do
+    member do
+      get :followings, :followers
+    end
   end
   resource :profile, only: %i[show edit update]
   resources :others_profiles, only: %i[show] do
