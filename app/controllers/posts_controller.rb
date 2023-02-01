@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit destroy update]
-  before_action :category_all, only: %i[index new show edit favorites ]
-  before_action :target_age_all, only: %i[index new show edit favorites ]
-  before_action :set_search, only: %i[index new show edit]
+  before_action :category_all, only: %i[index new show edit favorites myselfs]
+  before_action :target_age_all, only: %i[index new show edit favorites myselfs]
+  before_action :set_search, only: %i[index new show edit myselfs]
   
   def index; end
 
@@ -50,6 +50,10 @@ class PostsController < ApplicationController
   def favorites
     @q = current_user.favorite_posts.ransack(params[:q])
     @favorite_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
+  def myselfs
+    @myselfs = current_user.posts.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private

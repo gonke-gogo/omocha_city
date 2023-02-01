@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :category_all, only: %i[new]
   before_action :target_age_all, only: %i[new]
   before_action :set_search, only: %i[new]
-
+  
   def new
     @user = User.new
   end

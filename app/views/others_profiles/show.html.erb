@@ -8,6 +8,17 @@
           </div>
           <div class="p-2">
               <h3 class="text-center text-2xl text-gray-900 font-medium leading-8"><%= @user.name %></h3>
+              <div class="text-center my-3">
+                <% if logged_in? %>
+                    <% unless @user == current_user %>
+                        <% if current_user.following?(@user) %>
+                            <%= link_to 'フォローを外す', unfollow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-outline btn-error" %>
+                        <% else %>
+                            <%= link_to 'フォローする', follow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-secondary" %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+              </div>
               <table class="text-xl my-3 flex justify-center">
                   <tbody><tr class="bg">
                        <td class="px-2 py-2 font-semibold">自己紹介</td>
@@ -15,18 +26,40 @@
                       <td class="px-2 py-2"><%= @user.introduction %></td>
                   </tr>
               </tbody></table>
-
-              <div class="text-center my-3">
-                <% unless @user == current_user %>
-                    <% if current_user.following?(@user) %>
-                        <%= link_to 'フォローを外す', unfollow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-outline btn-error" %>
-                    <% else %>
-                        <%= link_to 'フォローする', follow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-secondary" %>
-                    <% end %>
-                <% end %>
+              <div class="text-center">
+                <%= link_to 'レビュー内容',others_post_others_profile_path(@user), class: 'btn btn-secondary' %>
               </div>
 
           </div>
       </div>
   </div>
 </div>
+<% if logged_in? %>
+    <p><%= "id: #{@user.id}" %></p>
+    <p><%= "フォロー数: #{@user.following.count}" %></p>
+    <p><%= "フォロワー数: #{@user.follower.count}" %></p>
+    <h2>フォロー一覧</h2>
+    <% @user.following_users.where.not(id: current_user.id).each do |user| %>
+    <p>
+        <%= "id: #{user.id} email: #{user.email}" %>
+        <% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), data: { "turbo-method": :post } %>
+        <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), data: { "turbo-method": :post } %>
+        <% end %>
+        <%= link_to "show", user_path(user) %>
+    </p>
+    <% end %>
+    <h2>フォロワー一覧</h2>
+    <% @user.follower_users.where.not(id: current_user.id).each do |user| %>
+    <p>
+        <%= "id: #{user.id} email: #{user.email}" %>
+        <% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), data: { "turbo-method": :post } %>
+        <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), data: { "turbo-method": :post } %>
+        <% end %>
+        <%= link_to "show", user_path(user) %>
+    </p>
+    <% end %>
+<% end %>

@@ -10,12 +10,17 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[create destroy], shallow: true
     collection do
-      get :favorites
+      get :favorites, :myselfs
     end
   end
   resources :categories, only: %i[index]
   resources :favorites, only: %i[create destroy]
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create show] do
+  end
   resource :profile, only: %i[show edit update]
-  resources :others_profiles, only: %i[show]
+  resources :others_profiles, only: %i[show] do
+    member do
+     get :others_post
+    end
+  end
 end

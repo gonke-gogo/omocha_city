@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :following, class_name: "FollowRelationship", foreign_key: "following_id", dependent: :destroy
-  has_many :follower, class_name: "FollowRelationship", foreign_key: "follower_id", dependent: :destroy
   has_many :following_users, through: :following, source: :follower
+  has_many :follower, class_name: "FollowRelationship", foreign_key: "follower_id", dependent: :destroy
   has_many :follower_users, through: :follower, source: :following
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
