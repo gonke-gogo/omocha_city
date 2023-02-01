@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   get 'logout', to: 'user_sessions#destroy'
+  post 'follow/:id', to: 'follow_relationships#create', as: 'follow'
+  post 'unfollow/:id', to: 'follow_relationships#destroy', as: 'unfollow'
 
   resources :comments, only: %i[create destroy]
   resources :posts do
