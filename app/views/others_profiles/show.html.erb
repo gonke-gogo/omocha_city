@@ -19,9 +19,9 @@
               <div class="text-center my-3">
                 <% unless @user == current_user %>
                     <% if current_user.following?(@user) %>
-                        <%= link_to 'フォロー外す', unfollow_path(@user.id),  data: { "turbo-method": :post } %>
+                        <%= link_to 'フォローを外す', unfollow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-outline btn-error" %>
                     <% else %>
-                        <%= link_to 'フォローする', follow_path(@user.id),  data: { "turbo-method": :post } %>
+                        <%= link_to 'フォローする', follow_path(@user.id),  data: { "turbo-method": :post }, class: "btn btn-secondary" %>
                     <% end %>
                 <% end %>
               </div>
