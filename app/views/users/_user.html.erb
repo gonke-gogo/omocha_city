@@ -1,0 +1,11 @@
+<div class="card card-compact w-96 bg-base-100 shadow-xl my-5 mx-auto">
+  <div class="flex justify-center items-center p-8">
+    <div class="hover:opacity-75">
+      <%= link_to others_profile_path(user) do %>
+      <h4 class="card-title fw-bold"><%= user.name %></h4>
+      <%= image_tag user.avatar.url, class: 'follow-img' %>
+      <% end %>
+    </div>
+    <div class="ml-8"><%= render 'follow_relationships/follow_button', user: user %></div>
+  </div>
+</div>

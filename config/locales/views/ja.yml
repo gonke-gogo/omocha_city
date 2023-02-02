@@ -25,4 +25,6 @@ ja:
    others_profiles:
      show:
        title: 'プロフィール'
+     others_post:
+       title: '投稿一覧'
    

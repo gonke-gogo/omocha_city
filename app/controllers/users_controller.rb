@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
-  before_action :category_all, only: %i[new]
-  before_action :target_age_all, only: %i[new]
-  before_action :set_search, only: %i[new]
-
+  skip_before_action :require_login, only: %i[new create]
+  before_action :category_all, only: %i[new create followings followers]
+  before_action :target_age_all, only: %i[new create followings followers]
+  before_action :set_search, only: %i[new create followings followers]
+  before_action :set_user, only: %i[followings followers]
+  
   def new
     @user = User.new
   end
@@ -18,9 +19,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @users = @user.following_users
+  end
+
+  def followers
+    @users = @user.follower_users
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
