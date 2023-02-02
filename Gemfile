@@ -75,3 +75,4 @@ gem 'carrierwave'
 gem "dartsass-rails", "~> 0.4.1"
 gem "kaminari"
 gem 'ransack'
+gem 'enum_help'
