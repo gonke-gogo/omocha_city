@@ -28,3 +28,11 @@
      object-fit: cover; /* 縦横比維持しつつトリミング */
   border-radius: 50%;
 }
+
+.follow-img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover; /* 縦横比維持しつつトリミング */
+  border-radius: 50%;
+}
