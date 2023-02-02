@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
-  before_action :category_all, only: %i[new followings followers]
-  before_action :target_age_all, only: %i[new followings followers]
-  before_action :set_search, only: %i[new followings followers]
+  before_action :category_all, only: %i[new create followings followers]
+  before_action :target_age_all, only: %i[new create followings followers]
+  before_action :set_search, only: %i[new create followings followers]
   before_action :set_user, only: %i[followings followers]
   
   def new
