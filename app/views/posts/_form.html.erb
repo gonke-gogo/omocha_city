@@ -43,16 +43,10 @@
     <% end %>
   <% end %>
 
+  <%# 店舗名 %>
   <div class="mt-4">
-    <select class="block select border-black w-full max-w-xs">
-      <option disabled selected>購入した店舗を選んでください</option>
-      <option>トイザらス</option>
-      <option>アカチャンホンポ</option>
-      <option>西松屋</option>
-      <option>バースデー</option>
-      <option>トイプラネット</option>
-      <option>その他</option>
-    </select>
+    <%= f.label :shop_link, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.select :shop_link, Post.shop_links.keys.map { |k| [t("enums.post.shop_link.#{k}"), k] }, { include_blank: "購入した店舗を選択" }, class: "mb-3 sm:mb-0 mr-9 border border-line-200 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %>
   </div>
 
   <%= f.submit '投稿する', class: 'btn btn-primary my-4' %>

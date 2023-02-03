@@ -10,4 +10,6 @@ class Post < ApplicationRecord
 
   validates :toy_name, presence: true, length: { maximum: 255 }
   validates :content, presence: true, length: {maximum: 1000}
+
+  enum shop_link: { toyzarasu: 1, nisimatsuya: 2, akachanhonpo: 3, birthday: 4, yodobashicamera: 5, bigcamera: 6, toyplanet: 7, hakuhinkantoypark: 8, net: 90, others: 100 }
 end

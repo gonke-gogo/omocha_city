@@ -25,7 +25,7 @@
           <div class="justify-center m-5 flex">
             <%= render 'shared/avatar_link', object: @post %>
           </div>
-          <p>投稿日：<%= l @post.created_at, format: :long  %></p>
+          <p><i class="fa-solid fa-calendar-days mr-1"></i>投稿日：<%= l @post.created_at, format: :long  %></p>
           <%= simple_format(@post.content, class: "mt-5") %>
           <% unless @post.categories.blank? %>
             <div class="flex justify-center mt-5">
@@ -44,6 +44,12 @@
                 </div>
               <% end %>
             </div>
+          <% end %>
+          <% if @post.shop_link.present? %>
+          <div class="flex justify-center mt-3">
+           <div><i class="fa-solid fa-store mr-1"></i>購入店舗：</div> 
+           <div class="text-primary"><%= @post.shop_link_i18n %></div>
+          </div>
           <% end %>
         </div>
         <% if logged_in? && current_user.own?(@post) %>
