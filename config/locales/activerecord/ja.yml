@@ -24,3 +24,15 @@ ja:
         password: 'パスワード'
       comment:
         content: 'コメント'
+  enums:
+    post:
+      shop_link:
+        toyzarasu: トイザらス
+        nisimatsuya: 西松屋
+        akachanhonpo: アカチャンホンポ
+        birthday: バースデー
+        yodobashicamera: ヨドバシカメラ
+        bigcamera: ビッグカメラ
+        toyplanet: トイプラネット
+        hakuhinkantoypark: 博品館トイパーク
+        others: その他
