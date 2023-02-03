@@ -19,7 +19,7 @@ ja:
         toy_movie: 'おもちゃの動画'
         category: 'カテゴリー(任意)'
         target_age: '対象年齢(任意)'
-        shop_link: '店舗名'
+        shop_link: '店舗名(任意)'
       user_session:
         email: 'メールアドレス'
         password: 'パスワード'
