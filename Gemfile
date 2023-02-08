@@ -76,3 +76,5 @@ gem "dartsass-rails", "~> 0.4.1"
 gem "kaminari"
 gem 'ransack'
 gem 'enum_help'
+gem 'rakuten_web_service'
+gem 'dotenv-rails'

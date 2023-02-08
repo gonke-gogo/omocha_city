@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   mount_uploader :toy_movie, ToyMovieUploader
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
   has_many :post_ages, dependent: :destroy

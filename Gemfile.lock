@@ -90,6 +90,10 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.12.0)
@@ -117,6 +121,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.3)
     jwt (2.6.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -211,6 +216,8 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rakuten_web_service (1.13.1)
+      json (~> 2.3)
     ransack (3.2.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
@@ -268,6 +275,7 @@ DEPENDENCIES
   carrierwave
   dartsass-rails (~> 0.4.1)
   debug
+  dotenv-rails
   enum_help
   faker
   importmap-rails
@@ -277,6 +285,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4)
   rails-i18n
+  rakuten_web_service
   ransack
   sorcery
   sprockets-rails

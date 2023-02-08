@@ -9,6 +9,9 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @rakuten_name = params[:toy]['itemName']
+    @rakuten_url = params[:toy]['itemUrl']
+    @rakuten_image = params[:toy]['mediumImageUrls'][0]
   end
   
   def create

@@ -1,0 +1,7 @@
+<% toys.first(10).each do |toy| %>
+  <div class="list-group">
+  <%= image_tag (toy['mediumImageUrls'][0]) %>
+  <%= toy.name %>
+  <%=  link_to '登録する', new_post_path(toy: toy.params) %>
+  </div>
+<% end %>
