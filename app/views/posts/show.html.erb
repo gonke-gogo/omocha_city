@@ -27,6 +27,8 @@
           </div>
           <p><i class="fa-solid fa-calendar-days mr-1"></i>投稿日：<%= l @post.created_at, format: :long  %></p>
           <%= simple_format(@post.content, class: "mt-5") %>
+          <%= image_tag @post.rakuten_toyimage %>
+          <%= link_to @post.rakuten_toyname, @post.netshop_link %>
           <% unless @post.categories.blank? %>
             <div class="flex justify-center mt-5">
               <% @post.categories.each do |category| %>

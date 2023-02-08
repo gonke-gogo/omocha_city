@@ -4,7 +4,6 @@
      <%= f.submit '製品名を検索', class: "form-control btn btn-success" %>
   <% end %>
 </div>
-  <h2>検索結果</h2>
   <% if @toys.present? %>
     <%= render "toy", toys: @toys %>
   <% end %>
