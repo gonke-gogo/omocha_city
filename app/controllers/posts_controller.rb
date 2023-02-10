@@ -4,14 +4,18 @@ class PostsController < ApplicationController
   before_action :category_all, only: %i[index new show edit create favorites myselfs]
   before_action :target_age_all, only: %i[index new show edit create favorites myselfs]
   before_action :set_search, only: %i[index new show edit create myselfs]
-  
+
   def index; end
 
   def new
     @post = Post.new
-    @rakuten_name = params[:toy]['itemName']
-    @rakuten_url = params[:toy]['itemUrl']
-    @rakuten_image = params[:toy]['mediumImageUrls'][0]
+    if params[:toy].present?
+      @rakuten_name = params[:toy]['itemName']
+      @rakuten_url = params[:toy]['itemUrl']
+      @rakuten_image = params[:toy]['mediumImageUrls'][0]
+    else
+      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
+    end
   end
   
   def create
@@ -67,6 +71,12 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def new_post_access
+    unless @rakuten_name.present?
+      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
+    end
   end
 
 end

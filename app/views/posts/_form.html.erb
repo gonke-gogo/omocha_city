@@ -48,10 +48,14 @@
     <%= f.label :shop_link, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.select :shop_link, Post.shop_links.keys.map { |k| [t("enums.post.shop_link.#{k}"), k] }, { include_blank: "購入した店舗を選択" }, class: "mb-3 sm:mb-0 mr-9 border border-line-200 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %>
   </div>
-  <%= image_tag @rakuten_image %>
-  <%= f.hidden_field :rakuten_toyimage, :value => @rakuten_image  %>
-  <%= f.hidden_field :netshop_link, :value => @rakuten_url  %>
-  <%= f.hidden_field :rakuten_toyname, :value => @rakuten_name  %>
 
+  <% if current_page?(new_post_path) %>
+    <%= image_tag @rakuten_image %>
+    <%= f.hidden_field :rakuten_toyimage, :value => @rakuten_image  %>
+    <%= f.hidden_field :netshop_link, :value => @rakuten_url  %>
+    <%= f.hidden_field :rakuten_toyname, :value => @rakuten_name  %>
+  <% else %>
+    <%= image_tag post.rakuten_toyimage %>
+  <% end %>
   <%= f.submit '投稿する', class: 'btn btn-primary my-4' %>
 <% end %>
