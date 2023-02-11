@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    # posts/newへのURI直打ちを制限
     if params[:toy].present?
       @rakuten_name = params[:toy]['itemName']
       @rakuten_url = params[:toy]['itemUrl']

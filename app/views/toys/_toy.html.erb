@@ -1,7 +1,11 @@
 <% toys.first(20).each do |toy| %>
-  <div class="list-group">
-  <%= image_tag (toy['mediumImageUrls'][0]) %>
-  <%= toy.name %>
-  <%=  link_to '登録する', new_post_path(toy: toy.params) %>
+  <div class="card card-compact bg-base-100 shadow-2xl my-4 w-7/12 mx-auto">
+    <div class="block">
+      <%= image_tag (toy['mediumImageUrls'][0]), class: "mx-auto my-4" %>
+    </div>
+    <%= toy.name %>
+    <div class="block">
+      <%=  link_to '投稿する', new_post_path(toy: toy.params), class: "btn btn-primary my-2" %>
+    </div>
   </div>
 <% end %>
