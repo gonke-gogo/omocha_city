@@ -29,9 +29,9 @@
       <% end %>
       <!-- 年齢 -->
        <% unless @post.target_ages.blank? %>
-        <div class="flex mb-1">
+        <div class="flex flex-wrap mb-1">
           <% @post.target_ages.each do |target_age| %>
-            <div class="badge badge-secondary my-1">
+            <div class="badge badge-secondary my-1 mr-1">
               <%= link_to target_age.name ,posts_path(target_age_id: target_age.id) %>
             </div>
           <% end %>
