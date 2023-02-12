@@ -1,13 +1,13 @@
 <% unless logged_in? && current_user.own?(object) %>
-  <div class="m-2 hover:opacity-75">
+  <div class="my-2 hover:opacity-75">
     <%= link_to others_profile_path(object.user.id) do %>
-      <%= image_tag object.user.avatar.url, class: "avatar-img" %>
+      <%= image_tag object.user.avatar.url, class: "avatar-img-xs" %>
       <p class="text-center text-primary text-lg font-bold"><%= object.user.name %></p>
     <% end %>
   </div>
 <% else %>
-  <div class="m-2">
-    <%= image_tag object.user.avatar.url, class: "avatar-img" %>
-    <p class="text-center text-primary text-lg font-bold"><%= object.user.name %></p>
+  <div class="my-2 flex  items-center">
+    <%= image_tag object.user.avatar.url, class: "avatar-img-xs" %>
+    <p class="text-center text-primary text-lg font-bold ml-3"><%= object.user.name %></p>
   </div>
 <% end %>
