@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'user_sessions#destroy'
   post 'follow/:id', to: 'follow_relationships#create', as: 'follow'
   post 'unfollow/:id', to: 'follow_relationships#destroy', as: 'unfollow'
+  get 'toys/search', to: 'toys#search'
 
   resources :comments, only: %i[create destroy]
   resources :posts do

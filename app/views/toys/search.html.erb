@@ -1,0 +1,11 @@
+<div class="my-5">
+  <%= form_with url: toys_search_path, method: :get, local: true do |f|  %>
+     <%= f.text_field :keyword, value: params[:keyword], class: "form-control mx-auto rounded border-gray-500 w-96", placeholder: "おもちゃの名前" %>
+     <%= f.submit 'おもちゃを検索', class: "form-control btn btn-accent mx-auto my-5" %>
+  <% end %>
+  <div class="mx-auto text-center">
+    <% if @toys.present? %>
+      <%= render "toy", toys: @toys %>
+    <% end %>
+  </div>
+</div>

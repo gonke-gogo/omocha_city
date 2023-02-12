@@ -1,14 +1,22 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit destroy update]
-  before_action :category_all, only: %i[index new show edit favorites myselfs]
-  before_action :target_age_all, only: %i[index new show edit favorites myselfs]
-  before_action :set_search, only: %i[index new show edit myselfs]
-  
+  before_action :category_all, only: %i[index new show edit create favorites myselfs]
+  before_action :target_age_all, only: %i[index new show edit create favorites myselfs]
+  before_action :set_search, only: %i[index new show edit create myselfs]
+
   def index; end
 
   def new
     @post = Post.new
+    # posts/newへのURI直打ちを制限
+    if params[:toy].present?
+      @rakuten_name = params[:toy]['itemName']
+      @rakuten_url = params[:toy]['itemUrl']
+      @rakuten_image = params[:toy]['mediumImageUrls'][0]
+    else
+      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
+    end
   end
   
   def create
@@ -59,11 +67,17 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, :shop_link, category_ids: [], target_age_ids: [])
+    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, :shop_link, :netshop_link, :rakuten_toyname, :rakuten_toyimage, category_ids: [], target_age_ids: [])
   end
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def new_post_access
+    unless @rakuten_name.present?
+      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
+    end
   end
 
 end

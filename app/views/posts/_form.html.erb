@@ -1,15 +1,31 @@
 <%= form_with model: post, class: "my-5", local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <div class="text-center font-bold">投稿するおもちゃ</div>
+
+  <%# 楽天のおもちゃ画像、params %>
+  <% if current_page?(new_post_path) %>
+    <%= image_tag @rakuten_image, class: "mx-auto" %>
+    <%= f.hidden_field :rakuten_toyimage, :value => @rakuten_image  %>
+    <%= f.hidden_field :netshop_link, :value => @rakuten_url  %>
+    <%= f.hidden_field :rakuten_toyname, :value => @rakuten_name  %>
+  <% else %>
+    <%= image_tag post.rakuten_toyimage, class: "mx-auto" %>
+  <% end %>
+
+  <%# おもちゃの名前 %>
   <div class="">
     <%= f.label :toy_name, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.text_field :toy_name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
   </div>
+  
 
+  <%# おもちゃを使用したコメント %>
   <div class="">
     <%= f.label :content, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.text_area :content, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', rows: 5 %>
   </div>
 
+  <%# おもちゃの使用写真 %>
   <div class="">
     <%= f.label :toy_image, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.file_field :toy_image, class: "mb-5", accept: 'image/*' %>
@@ -20,6 +36,7 @@
                   size: '300x200' %>
   </div>
 
+  <%# おもちゃの使用動画 %>
   <div class="">
     <%= f.label :toy_movie, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
     <%= f.file_field :toy_movie, :accept => 'video/*' %>

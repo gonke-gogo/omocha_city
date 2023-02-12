@@ -1,64 +1,72 @@
 <% content_for(:title, t('.title')) %>
-<div class="container pt-5 m-auto text-center">
-    <!-- 投稿内容 -->
-      <article class="">
-        <h2 class="text-4xl font-bold my-4"><%= @post.toy_name %></h2>
-        <div class="">
-          <div class='border-b-4 border-black	py-5'>
-            <% if @post.toy_movie.present? %>
-              <div class="flex m-auto justify-around">
-                <div class='w-2/5'>
-                  <p>画像</p>
-                  <%= image_tag @post.toy_image.url, class: '', size: '300x200' %>
-                </div>
-                <div class='w-2/5'>
-                  <p>動画</p>
-                  <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
-                </div>
-              </div>
-            <% else %>
-              <div class='w-2/3 m-auto'>
-                <%= image_tag @post.toy_image.url, class: 'justify-center m-auto', size: '300x200' %>
-              </div>
-            <% end %>
-          </div>
-          <div class="justify-center m-5 flex">
-            <%= render 'shared/avatar_link', object: @post %>
-          </div>
-          <p><i class="fa-solid fa-calendar-days mr-1"></i>投稿日：<%= l @post.created_at, format: :long  %></p>
-          <%= simple_format(@post.content, class: "mt-5") %>
-          <% unless @post.categories.blank? %>
-            <div class="flex justify-center mt-5">
-              <% @post.categories.each do |category| %>
-                <div class="badge badge-primary m-1">
-                  <%= link_to category.category_name ,posts_path(category_id: category.id) %>
-                </div>
-              <% end %>
+<div class="flex justify-center my-6">
+  <div class="flex flex-col md:flex-row md:max-w-3xl rounded-lg bg-white shadow-lg">
+    <!-- おもちゃの写真 -->
+    <%= image_tag @post.toy_image.url, class: 'w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg md:w-72' %>
+    <div class="p-6 flex flex-col justify-start">
+      <!-- おもちゃの名前とお気に入りボタン -->
+      <div class="flex">
+        <h5 class="text-gray-900 text-xl font-bold mb-2"><%= @post.toy_name %></h5>
+        <div class="pt-0.5">
+          <% unless logged_in? && current_user.own?(@post) %>
+            <%= render 'favorite_button', post: @post if logged_in? %>
+          <% end %>
+        </div>
+      </div>
+      <!-- 本文 -->
+      <p class="text-gray-700 text-base mb-2">
+        <%= simple_format(@post.content) %>      
+      </p>
+      <!-- カテゴリ -->
+      <% unless @post.categories.blank? %>
+        <div class="flex">
+          <% @post.categories.each do |category| %>
+            <div class="badge badge-primary my-1 mr-1">
+              <%= link_to category.category_name ,posts_path(category_id: category.id) %>
             </div>
           <% end %>
-          <% unless @post.target_ages.blank? %>
-            <div class="flex justify-center mt-2">
-              <% @post.target_ages.each do |target_age| %>
-                <div class="badge badge-secondary m-1">
-                  <%= link_to target_age.name ,posts_path(target_age_id: target_age.id) %>
-                </div>
-              <% end %>
+        </div>
+      <% end %>
+      <!-- 年齢 -->
+       <% unless @post.target_ages.blank? %>
+        <div class="flex mb-1">
+          <% @post.target_ages.each do |target_age| %>
+            <div class="badge badge-secondary my-1">
+              <%= link_to target_age.name ,posts_path(target_age_id: target_age.id) %>
             </div>
           <% end %>
-          <% if @post.shop_link.present? %>
-          <div class="flex justify-center mt-3">
+        </div>
+      <% end %>
+
+      <!-- 購入店舗 -->
+       <% if @post.shop_link.present? %>
+          <div class="flex mb-1 text-xs">
            <div><i class="fa-solid fa-store mr-1"></i>購入店舗：</div> 
            <div class="text-primary"><%= @post.shop_link_i18n %></div>
           </div>
           <% end %>
-        </div>
-        <% if logged_in? && current_user.own?(@post) %>
-          <%= render 'crud_menus', post: @post %>
-        <% else %>
-          <%= render 'favorite_button', post: @post if logged_in? %>
-        <% end %>
-      </article>
-  
+      <div class="text-gray-600 text-xs flex items-center"><i class="fa-solid fa-calendar-days mr-1"></i>投稿日：<%= l @post.created_at, format: :long  %></div>
+      <div class="flex">
+        <%= render 'shared/avatar_link', object: @post %>
+      </div>
+      <div class="border-t flex items-center">
+        <%= image_tag @post.rakuten_toyimage %>
+        <div class="btn btn-primary"><i class="fa-sharp fa-solid fa-cart-shopping mr-2"></i><%= link_to "商品を見に行く", @post.netshop_link %></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @post.toy_movie.present? %>
+  <div class="w-2/5">
+    <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
+  </div>
+<% end %>
+<div class="flex justify-center">
+<% if logged_in? && current_user.own?(@post) %>
+  <%= render 'crud_menus', post: @post %>
+<% end %>
+</div>
+<div class="container pt-5 m-auto text-center">
   <div class="mt-10">
     <!-- コメントフォーム -->
     <%= render 'comments/form', { post: @post, comment: @comment } %>
