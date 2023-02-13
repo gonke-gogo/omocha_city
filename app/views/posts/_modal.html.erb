@@ -1,7 +1,7 @@
 <% if @post.toy_movie.present? %>
   <div data-controller="modal" class="flex justify-center my-20">
     <button data-action="click->modal#open" class="p-4 bg-gray-600 text-white">
-      モーダルボタン
+      <i class="fa-solid fa-video"></i>
     </button>
     <div
     data-target="modal.container"
@@ -9,11 +9,11 @@
     class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
     style="z-index: 9999;"
   >
-    <div class="max-h-screen w-full max-w-2lg relative">
+    <div class="max-h-screen w-9/12 max-w-md relative">
       <div class="bg-white shadow-xl">
-        <div class="p-8">
-    <div class="w-2/5">
-      <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
+        <div class="p-3">
+    <div class="mx-auto">
+      <%= video_tag(@post.toy_movie.to_s, height: "540px", width: "500px", class: "m-auto h-96 w-96", :controls => true) %>
     </div>
           <div class="flex justify-end items-center flex-wrap mt-6">
             <button

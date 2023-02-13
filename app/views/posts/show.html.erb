@@ -57,11 +57,6 @@
     </div>
   </div>
 </div>
-<% if @post.toy_movie.present? %>
-  <div class="w-2/5">
-    <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
-  </div>
-<% end %>
 <div class="flex justify-center">
 <% if logged_in? && current_user.own?(@post) %>
   <%= render 'crud_menus', post: @post %>
