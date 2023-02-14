@@ -10,7 +10,7 @@ export default class extends Controller {
     // The ID of the background to hide/remove
     this.backgroundId = this.data.get('backgroundId') || 'modal-background'
 
-    // The HTML for the background element
+    // The HTML for the background element  
     this.backgroundHtml =
       this.data.get('backgroundHtml') || this._backgroundHTML()
 
