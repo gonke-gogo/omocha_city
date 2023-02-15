@@ -55,4 +55,6 @@
     </nav>
   </div>
 </div>
-    <%= render '/posts/search_form', url: posts_path %>
+<% unless current_page?(root_path) %>
+  <%= render '/posts/search_form', url: posts_path %>
+<% end %>

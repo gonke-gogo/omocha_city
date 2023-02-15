@@ -75,10 +75,12 @@
   </div>
 </div>
 
-<div class="text-center">
-  <% unless current_page?(favorites_posts_path) %>
-    <%= render '/posts/search_form', url: posts_path %>
-  <% else %>
-    <%= render '/posts/search_form', url: favorites_posts_path %>
-  <% end %> 
-</div>
+<% unless current_page?(toys_search_path) || current_page?(new_post_path) || current_page?(root_path) %>
+  <div class="text-center">
+    <% unless current_page?(favorites_posts_path) %>
+      <%= render '/posts/search_form', url: posts_path %>
+    <% else %>
+      <%= render '/posts/search_form', url: favorites_posts_path %>
+    <% end %> 
+  </div>
+<% end %>
