@@ -2,59 +2,49 @@
  <div class="top-wrapper">
   <div class="top-inner-text">
     <p>おもちゃシティーへようこそ！！</p>
+    <p>お気に入りのおもちゃをみんなで共有しよう</p>
   </div>
 </div>
 
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-    <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-      <span class="relative inline-block">
-        <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
-          <defs>
-            <pattern id="df31b9f6-a505-42f8-af91-d2b7c3218e5c" x="0" y="0" width=".135" height=".30">
-              <circle cx="1" cy="1" r=".7"></circle>
-            </pattern>
-          </defs>
-          <rect fill="url(#df31b9f6-a505-42f8-af91-d2b7c3218e5c)" width="52" height="24"></rect>
-        </svg>
-        <span class="relative">The</span>
-      </span>
-      quick, brown fox jumps over a lazy dog
+  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-5">
+    <h2 class="max-w-lg mb-6 font-sans text-2xl text-center  font-bold leading-none tracking-tight text-gray-900 sm:text-4xl mx-auto">
+      おもちゃシティーの使い方
     </h2>
-    <p class="text-base text-gray-700 md:text-lg">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+    <p class="text-base text-gray-700 md:text-lg text-center">
+      おもちゃシティーはお気に入りのおもちゃを共有するサービスです
     </p>
   </div>
   <div class="grid gap-8 row-gap-8 lg:grid-cols-3">
     <div class="sm:text-center">
-      <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
-        <%= image_tag 'search.png' %>
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'search.png', class: "sm:w-40 sm:h-40 w-28 h-28" %>
       </div>
-      <h6 class="mb-2 font-semibold leading-5">気になるおもちゃを見てみよう</h6>
-      <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-        Cheese on toast airedale the big cheese. Danish fontina cheesy grin airedale danish
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-magnifying-glass mr-1"></i>おもちゃを探す</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        どんなおもちゃがあるのでしょうか？<br>
+        実際に使っている様子を見てみよう！
       </p>
-      <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
     </div>
     <div class="sm:text-center">
-      <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
-        <%= image_tag 'post.png' %>
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'post.png',  class: "sm:w-40 sm:h-40 w-28 h-28" %>
       </div>
-      <h6 class="mb-2 font-semibold leading-5">我が子のおもちゃを投稿してみよう</h6>
-      <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-        Satoshi Nakamoto launched lots of decentralisation when Litecoin required
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-camera-retro mr-1"></i>おもちゃを投稿する</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        どんなおもちゃを持っていますか？<br>
+        写真や動画を添えてみんなで共有しよう！
       </p>
-      <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
     </div>
     <div class="sm:text-center">
-      <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
-        <%= image_tag 'buy.png' %>
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'buy.png',  class: "sm:w-40 sm:h-40 w-28 h-28" %>
       </div>
-      <h6 class="mb-2 font-semibold leading-5">気に入ったおもちゃを買ってみる</h6>
-      <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-        Bavaria ipsum dolor sit amet Radler Schneid vui huift vui ognudelt i mechad
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-cart-shopping mr-1"></i>おもちゃを買う</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        気になるおもちゃはありましたか？<br>
+        良ければお子さんにプレゼントしてあげて！
       </p>
-      <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
     </div>
   </div>
 </div>
