@@ -1,9 +1,15 @@
 <!-- component -->
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> 
 <div class="w-full text-slate-200 bg-primary dark-mode:text-gray-200 dark-mode:bg-gray-800">
   <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
     <div class="p-4 flex flex-row items-center justify-between">
-      <%= link_to 'おもちゃCITY', root_path, { class: "text-lg font-semibold tracking-widest text-slate-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline" } %>
+      <%= link_to root_path do %>
+        <div class="flex items-center">
+          <p class="text-2xl lg:text-4xl font-semibold tracking-widest text-slate-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline title">おもちゃシティー</p>
+          <%= image_tag 'robot.png', class: "w-16 h-14" %>
+        </div>
+      <% end %>
+      
       <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
           <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -68,6 +74,7 @@
           <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 md:text-center">
             <%= link_to 'プロフィール', profile_path, { class: "btn btn-ghost text-black" } %>
             <%= link_to 'ログアウト', logout_path, { class: "btn btn-ghost text-black" } %>
+            
           </div>
         </div>
       </div>

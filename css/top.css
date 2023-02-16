@@ -22,7 +22,7 @@
   width: 150px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 780ppx) {
   .top-wrapper {
     background-size: cover;
     background-repeat: no-repeat;
@@ -39,4 +39,7 @@
     left: 23%;
     width: 50px;
   }
+}
+.title {
+  font-family: "Nico Moji";
 }
