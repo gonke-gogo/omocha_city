@@ -1,49 +1,93 @@
-<div class="navbar bg-secondary">
-  <div class="flex-1">
-    <%= link_to 'おもちゃCITY', root_path, { class: "btn btn-ghost normal-case text-xl" } %>
-  </div>
-  <% unless current_page?(favorites_posts_path) %>
-    <%= render '/posts/search_form', url: posts_path %>
-  <% else %>
-    <%= render '/posts/search_form', url: favorites_posts_path %>
-  <% end %>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li class="dropdown">
-          <label tabindex="0" class="btn btn-ghost text-black">投稿<i class="fa-sharp fa-solid fa-caret-down"></i></label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-28">
-            <li><%= link_to '投稿一覧', posts_path, {class: "btn btn-ghost text-black"} %></li>
-            <li><%= link_to '投稿する', toys_search_path, { class: "btn btn-ghost text-black" } %></li>   
-            <li><%= link_to 'お気に入り', favorites_posts_path, { class: "btn btn-ghost text-black" } %></li>       
-          </ul>
-      </li>
-      <li class="dropdown">
-          <label tabindex="0" class="btn btn-ghost text-black">カテゴリー<i class="fa-sharp fa-solid fa-caret-down"></i></label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-            <% @category_all.each do |category| %>
-              <li><%= link_to category.category_name, posts_path(category_id: category.id), class: "btn btn-ghost text-black" %></li>
-            <% end %>
-          </ul>
-      </li>
-      <li class="dropdown">
-          <label tabindex="0" class="btn btn-ghost text-black">対象年齢<i class="fa-sharp fa-solid fa-caret-down"></i></label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-24">
-            <% @target_age_all.each do |target_age| %>
-              <li><%= link_to target_age.name, posts_path(target_age_id: target_age.id), class: "btn btn-ghost text-black" %></li>
-            <% end %>
-          </ul>
-      </li>
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full">
-            <%= image_tag current_user.avatar.url %>
+<!-- component -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> 
+<div class="w-full text-slate-200 bg-primary dark-mode:text-gray-200 dark-mode:bg-gray-800">
+  <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div class="p-4 flex flex-row items-center justify-between">
+      <%= link_to root_path do %>
+        <div class="flex items-center">
+          <p class="text-2xl lg:text-4xl font-semibold tracking-widest text-slate-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline title">おもちゃシティー</p>
+          <%= image_tag 'robot.png', class: "w-16 h-14" %>
+        </div>
+      <% end %>
+      
+      <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+          <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+      <!-- 投稿 -->
+      <div @click.away="open = false" class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mb-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg btn btn-ghost">
+          <span>投稿</span>
+          <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-32 z-50 text-center">
+          <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 md:text-center">
+            <%= link_to '投稿一覧', posts_path, {class: "btn btn-ghost text-black"} %>
+            <%= link_to '投稿する', toys_search_path, { class: "btn btn-ghost text-black" } %>
+            <%= link_to 'お気に入り', favorites_posts_path, { class: "btn btn-ghost text-black" } %>
           </div>
-        </label>
-        <ul tabindex="0" class="menu  dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-36">
-          <li class="justify-center"><%= link_to 'プロフィール', profile_path, { class: "btn btn-ghost text-black" } %></li>
-          <li class="justify-center"><%= link_to 'ログアウト', logout_path, { class: "btn btn-ghost text-black" } %></li>
-        </ul>
+        </div>
       </div>
-    </ul>
+      <!-- カテゴリ -->
+      <div @click.away="open = false" class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg btn btn-ghost">
+          <span>カテゴリ</span>
+          <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-44 z-50 text-center">
+          <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 md:text-center">
+            <% @category_all.each do |category| %>
+              <%= link_to category.category_name, posts_path(category_id: category.id), class: "btn btn-ghost text-black md:block md:items-center md:flex" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- 年齢 -->
+      <div @click.away="open = false" class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg btn btn-ghost">
+          <span>対象年齢</span>
+          <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-24 z-50 text-center">
+          <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 md:text-center">
+            <% @target_age_all.each do |target_age| %>
+              <%= link_to target_age.name, posts_path(target_age_id: target_age.id), class: "btn btn-ghost text-black" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- プロフィール -->
+      <div @click.away="open = false" class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex flex-row items-center w-full px-4 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg btn btn-ghost">
+          <span class="avatar">
+            <div class="w-10 rounded-full">
+              <%= image_tag current_user.avatar.url %>
+            </div>
+          </span>
+          <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-36 z-50 text-center">
+          <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 md:text-center">
+            <%= link_to 'プロフィール', profile_path, { class: "btn btn-ghost text-black" } %>
+            <%= link_to 'ログアウト', logout_path, { class: "btn btn-ghost text-black" } %>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
+
+<% unless current_page?(toys_search_path) || current_page?(new_post_path) || current_page?(root_path) %>
+  <div class="text-center">
+    <% unless current_page?(favorites_posts_path) %>
+      <%= render '/posts/search_form', url: posts_path %>
+    <% else %>
+      <%= render '/posts/search_form', url: favorites_posts_path %>
+    <% end %> 
+  </div>
+<% end %>

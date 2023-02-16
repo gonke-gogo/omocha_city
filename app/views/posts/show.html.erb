@@ -5,8 +5,9 @@
     <%= image_tag @post.toy_image.url, class: 'w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg md:w-72' %>
     <div class="p-6 flex flex-col justify-start">
       <!-- おもちゃの名前とお気に入りボタン -->
-      <div class="flex">
-        <h5 class="text-gray-900 text-xl font-bold mb-2"><%= @post.toy_name %></h5>
+      <div class="flex items-center">
+        <h5 class="text-gray-900 text-xl font-bold mb-2 mr-2"><%= @post.toy_name %></h5>
+        <%= render 'modal' %>            
         <div class="pt-0.5">
           <% unless logged_in? && current_user.own?(@post) %>
             <%= render 'favorite_button', post: @post if logged_in? %>
@@ -29,9 +30,9 @@
       <% end %>
       <!-- 年齢 -->
        <% unless @post.target_ages.blank? %>
-        <div class="flex mb-1">
+        <div class="flex flex-wrap mb-1">
           <% @post.target_ages.each do |target_age| %>
-            <div class="badge badge-secondary my-1">
+            <div class="badge badge-secondary my-1 mr-1">
               <%= link_to target_age.name ,posts_path(target_age_id: target_age.id) %>
             </div>
           <% end %>
@@ -56,11 +57,6 @@
     </div>
   </div>
 </div>
-<% if @post.toy_movie.present? %>
-  <div class="w-2/5">
-    <%= video_tag(@post.toy_movie.to_s, height: "60%", width: "60%", class: "m-auto", :controls => true) %>
-  </div>
-<% end %>
 <div class="flex justify-center">
 <% if logged_in? && current_user.own?(@post) %>
   <%= render 'crud_menus', post: @post %>

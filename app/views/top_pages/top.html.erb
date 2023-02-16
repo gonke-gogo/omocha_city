@@ -1,17 +1,59 @@
-<div class='top-wrapper pt-24 text-center'>
-  <div class='text-center text-6xl font-bold'>
-    <h2>おもちゃシティーへようこそ！！</h2>
+
+ <div class="top-wrapper">
+  <div class="top-inner-text">
+    <p class="title text-white text-2xl md:text-7xl">おもちゃシティーへようこそ！！</p>
+    <p class="title text-white text-sm md:text-xl">お気に入りのおもちゃをみんなで共有しよう</p>
   </div>
-  <ul class="flex justify-center my-5">
-    <li class="text-gray-700 text-center px-4 py-5 m-2 rounded">
-      <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
-    </li>
-    <li class="text-gray-700  px-4 py-5 m-2 rounded">
-      <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
-    </li>
-  </ul>
-  <button class=" hover: text-white rounded px-4 py-5 my-10">
-    <%= link_to 'おもちゃを見にいく', posts_path, { class:"btn btn-outline btn-primary" } %>
-  </button>
 </div>
 
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-5 mb-2">
+    <h2 class="max-w-lg mb-6 font-sans text-xl sm:text-2xl md:text-3xl text-center  font-bold leading-none tracking-tight text-gray-900 lg:text-4xl mx-auto">
+      おもちゃシティーの使い方
+    </h2>
+    <p class="text-base text-gray-700 md:text-lg text-center">
+      おもちゃシティーはお気に入りのおもちゃを共有するサービスです
+    </p>
+  </div>
+  <div class="grid gap-8 row-gap-8 lg:grid-cols-3">
+    <div class="sm:text-center">
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'search.png', class: "sm:w-40 sm:h-40 w-28 h-28" %>
+      </div>
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-magnifying-glass mr-1"></i>おもちゃを探す</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        どんなおもちゃがあるのでしょうか？<br>
+        実際に使っている様子を見てみよう！
+      </p>
+    </div>
+    <div class="sm:text-center">
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'post.png',  class: "sm:w-40 sm:h-40 w-28 h-28" %>
+      </div>
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-camera-retro mr-1"></i>おもちゃを投稿する</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        どんなおもちゃを持っていますか？<br>
+        写真や動画を添えてみんなで共有しよう！
+      </p>
+    </div>
+    <div class="sm:text-center">
+      <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
+        <%= image_tag 'buy.png',  class: "sm:w-40 sm:h-40 w-28 h-28" %>
+      </div>
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-cart-shopping mr-1"></i>おもちゃを買う</h6>
+      <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
+        気になるおもちゃはありましたか？<br>
+        良ければお子さんにプレゼントしてあげて！
+      </p>
+    </div>
+  </div>
+</div>
+
+<ul class="flex justify-center mb-5">
+  <li class="text-gray-700 text-center px-4  m-2 rounded">
+    <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
+  </li>
+  <li class="text-gray-700  px-4  m-2 rounded">
+    <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
+  </li>
+</ul>

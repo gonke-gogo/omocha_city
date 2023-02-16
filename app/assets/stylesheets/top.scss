@@ -1,0 +1,47 @@
+.top-wrapper {
+  background-image: url("colorful-kids-toys.jpg");
+  background-size: cover;
+  min-height: calc(100vh - 100px);
+  position: relative;
+  background-position: 50% 80%;
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 2.0rem;
+    color: #0f0f01;
+  }
+  .top-logo {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 780px){
+  .top-wrapper {
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 200px;
+    width: 100%;
+
+    .top-inner-text {
+      font-size: 0.875rem;
+      top: 62%;
+      left: 50%;
+    }
+    .top-logo {
+      top: 30%;
+      left: 23%;
+      width: 50px;
+    }
+  }
+}
+
+.title {
+  font-family: "Nico Moji";
+}
