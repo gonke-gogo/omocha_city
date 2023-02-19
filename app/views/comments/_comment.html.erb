@@ -1,9 +1,9 @@
-<tr id="comment-<%= comment.id %>" class="">
-  <td class="w-20 rounded-full">
+<tr>
+  <td class="avatar-imag-xs">
     <%= render 'shared/avatar_link', object: comment %>
   </td>
   <td>
-    <div id="js-comment-<%= comment.id %>">
+    <div>
       <%= simple_format(comment.content) %>
     </div>
     <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
