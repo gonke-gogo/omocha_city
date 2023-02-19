@@ -24,7 +24,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, success: "おもちゃが投稿されました！"
     else
-      @category_all = Category.all
       flash.now[:danger] = "投稿に失敗しました"
       render :new, status: :unprocessable_entity
     end

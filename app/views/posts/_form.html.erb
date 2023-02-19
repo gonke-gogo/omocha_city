@@ -14,14 +14,14 @@
 
   <%# おもちゃの名前 %>
   <div class="">
-    <%= f.label :toy_name, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.label :toy_name, class: "inline-block text-gray-700 text-sm font-bold mb-2 mt-2" %><span class="text-red-600 text-xs">(必須項目)</span>
     <%= f.text_field :toy_name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
   </div>
   
 
   <%# おもちゃを使用したコメント %>
   <div class="">
-    <%= f.label :content, class: "block text-gray-700 text-sm font-bold mb-2 mt-2" %>
+    <%= f.label :content, class: "inline-block text-gray-700 text-sm font-bold mb-2 mt-2" %><span class="text-red-600 text-xs">(必須項目)</span>
     <%= f.text_area :content, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', rows: 5 %>
   </div>
 
