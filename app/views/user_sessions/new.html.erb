@@ -11,17 +11,15 @@
         <%= f.label :password, User.human_attribute_name(:password), class: "block text-gray-700 text-sm font-bold mb-2" %>
         <%= f.password_field :password, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
       </div>
-      <div class="flex items-center justify-between">
-        <div class="actions">
+        <div class="actions text-center">
             <%= f.submit 'ログイン', class: 'btn btn-primary my-5' %>
         </div>
-        <div class="flex">
+        <div class="flex justify-center">
           <%= link_to '登録ページへ', new_user_path, { class: "inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800" } %>
           <a class="inline-block align-baseline font-bold text-sm link-primary hover:text-primary-800 ml-5" href="#">
             パスワードをお忘れた方はこちら
           </a>
         </div>
-      </div>
     <% end %>
   </div>
 </div>
