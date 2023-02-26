@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit destroy update]
   before_action :category_all, only: %i[index new show edit create favorites myselfs]
   before_action :target_age_all, only: %i[index new show edit create favorites myselfs]
-  before_action :set_search, only: %i[index new show edit create myselfs]
 
   def index; end
 

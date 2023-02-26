@@ -49,11 +49,17 @@
   </div>
 </div>
 
-<ul class="flex justify-center mb-5">
-  <li class="text-gray-700 text-center px-4  m-2 rounded">
-    <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
-  </li>
-  <li class="text-gray-700  px-4  m-2 rounded">
-    <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
-  </li>
-</ul>
+<% if logged_in? %>
+  <div class="text-center mb-4">
+    <%= link_to 'おもちゃを投稿する', toys_search_path,  { class: "btn btn-primary" } %>
+  </div>
+<% else %>
+  <ul class="flex justify-center mb-5">
+    <li class="text-gray-700 text-center px-4  m-2 rounded">
+      <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
+    </li>
+    <li class="text-gray-700  px-4  m-2 rounded">
+      <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
+    </li>
+  </ul>
+<% end %>
