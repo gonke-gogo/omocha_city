@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[edit update]
   before_action :category_all, only: %i[show edit]
-  before_action :set_search, only: %i[show edit]
   before_action :target_age_all, only: %i[show edit]
 
   def show; end
