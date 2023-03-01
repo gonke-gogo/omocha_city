@@ -77,6 +77,7 @@ gem 'pry-rails'
 gem 'faker'
 gem 'rails-i18n'
 gem 'carrierwave'
+gem 'mini_magick'
 gem "dartsass-rails", "~> 0.4.1"
 gem "kaminari"
 gem 'ransack'
