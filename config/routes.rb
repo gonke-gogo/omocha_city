@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'top_pages#top'
+  get 'privacy', to: 'footer_links#privacy'
+  get 'terms', to: 'footer_links#terms'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   get 'logout', to: 'user_sessions#destroy'

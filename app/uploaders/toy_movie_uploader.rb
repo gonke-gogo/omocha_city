@@ -1,4 +1,6 @@
 class ToyMovieUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
   storage :file
   
   def store_dir
@@ -8,5 +10,5 @@ class ToyMovieUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w(jpg jpeg gif png MOV wmv mp4)
   end
-
+  
 end
