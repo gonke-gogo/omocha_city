@@ -20,7 +20,7 @@
       <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
         <%= image_tag 'search.png', class: "sm:w-40 sm:h-40 w-28 h-28" %>
       </div>
-      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-magnifying-glass mr-1"></i>おもちゃを探す</h6>
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-magnifying-glass mr-1"></i><%= link_to 'おもちゃを探す', posts_path %></h6>
       <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
         どんなおもちゃがあるのでしょうか？<br>
         実際に使っている様子を見てみよう！
@@ -30,7 +30,13 @@
       <div class="flex items-center justify-center sm:w-48 sm:h-48 mb-4 rounded-full mx-auto w-32 h-32">
         <%= image_tag 'post.png',  class: "sm:w-40 sm:h-40 w-28 h-28" %>
       </div>
-      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-camera-retro mr-1"></i>おもちゃを投稿する</h6>
+      <h6 class="mb-2 font-semibold leading-5 text-center"><i class="fa-solid fa-camera-retro mr-1"></i>
+        <% if logged_in? %>
+          <%= link_to 'おもちゃを投稿する', toys_search_path %>
+        <% else %>
+          おもちゃを投稿する
+        <% end %>
+      </h6>
       <p class="max-w-md mb-3 text-sm text-gray-900 mx-auto text-center">
         どんなおもちゃを持っていますか？<br>
         写真や動画を添えてみんなで共有しよう！
