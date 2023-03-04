@@ -65,7 +65,9 @@
 <div class="container pt-5 m-auto text-center">
   <div class="mt-10">
     <!-- コメントフォーム -->
-    <%= render 'comments/form', { post: @post, comment: @comment } %>
+    <% if logged_in? %>
+      <%= render 'comments/form', { post: @post, comment: @comment } %>
+    <% end %>
     <!-- コメントエリア -->
     <%= render 'comments/comments', { comments: @comments } %>
   </div>

@@ -12,21 +12,17 @@
       <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
     </div>
   </td>
-
-  <% if current_user.own?(comment) %>
-    <td class="pt-10">
-      <ul class="flex">
-        <li class="ml-5">
-          <a href="#" class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </a>
-        </li>
-        <li class="ml-5">
-          <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }  do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-        </li>
-      </ul>
-    </td>
+  <% if logged_in? %>
+    <% if current_user.own?(comment) %>
+      <td class="pt-10">
+        <ul class="flex">
+          <li class="ml-5">
+            <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }  do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+        </ul>
+      </td>
+    <% end %>
   <% end %>
 </tr>
