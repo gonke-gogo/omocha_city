@@ -27,4 +27,8 @@ ja:
        title: 'プロフィール'
      others_post:
        title: '投稿一覧'
-   
+   footer_links:
+     privacy:
+       title: 'プライバシーポリシー'
+     terms:
+       title: '利用規約'
