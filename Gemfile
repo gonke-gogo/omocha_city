@@ -71,16 +71,20 @@ end
 group :production do
   gem 'pg'
 end
-
+#ログイン
 gem 'sorcery'
-gem 'pry-rails'
-gem 'faker'
-gem 'rails-i18n'
+
 #image_uploader
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 
+# サイトマップ
+gem 'sitemap_generator'
+
+gem 'pry-rails'
+gem 'faker'
+gem 'rails-i18n'
 gem "dartsass-rails", "~> 0.4.1"
 gem "kaminari"
 gem 'ransack'
