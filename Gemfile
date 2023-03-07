@@ -79,8 +79,9 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 
-# サイトマップ
+# サイトマップ関連
 gem 'sitemap_generator'
+gem 'whenever', require: false
 
 gem 'pry-rails'
 gem 'faker'
