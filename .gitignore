@@ -40,4 +40,5 @@
 /omocha_city
 /node_modules
 /public/uploads
+/public/sitemap.xml.gz
 /.env
