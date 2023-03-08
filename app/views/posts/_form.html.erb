@@ -15,7 +15,8 @@
     <%# 表示しない %>
   <% end %>
   <% if current_page?(new_post_path) %>
-    <%= link_to '楽天市場で商品を検索する', toys_search_path %>
+    <%= f.label '商品検索（もし見つかりそうであれば！）', class: "inline-block text-gray-700 text-sm font-bold mb-2 mt-2" %></br>
+    <%= link_to '楽天市場で商品を検索する', toys_search_path, class: "btn btn-primary text-white" %>
   <% end %>
   <%# おもちゃの名前 %>
   <div class="">
