@@ -13,8 +13,6 @@ class PostsController < ApplicationController
       @rakuten_name = params[:toy]['itemName']
       @rakuten_url = params[:toy]['itemUrl']
       @rakuten_image = params[:toy]['mediumImageUrls'][0]
-    else
-      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
     end
   end
   

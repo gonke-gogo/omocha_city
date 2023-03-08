@@ -3,15 +3,20 @@
   <div class="text-center font-bold">投稿するおもちゃ</div>
 
   <%# 楽天のおもちゃ画像、params %>
-  <% if current_page?(new_post_path) %>
+  <% if current_page?(new_post_path) && @rakuten_image.present? %>
+    <%= f.label '選択された商品', class: "inline-block text-gray-700 text-sm font-bold mb-2 mt-2" %></span>
     <%= image_tag @rakuten_image, class: "mx-auto" %>
     <%= f.hidden_field :rakuten_toyimage, :value => @rakuten_image  %>
     <%= f.hidden_field :netshop_link, :value => @rakuten_url  %>
     <%= f.hidden_field :rakuten_toyname, :value => @rakuten_name  %>
-  <% else %>
+  <% elsif post.rakuten_toyimage.present? %>
     <%= image_tag post.rakuten_toyimage, class: "mx-auto" %>
+  <% else %>
+    <%# 表示しない %>
   <% end %>
-
+  <% if current_page?(new_post_path) %>
+    <%= link_to '楽天市場で商品を検索する', toys_search_path %>
+  <% end %>
   <%# おもちゃの名前 %>
   <div class="">
     <%= f.label :toy_name, class: "inline-block text-gray-700 text-sm font-bold mb-2 mt-2" %><span class="text-red-600 text-xs">(必須項目)</span>

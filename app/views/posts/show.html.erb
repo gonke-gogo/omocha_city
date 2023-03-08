@@ -50,10 +50,14 @@
       <div class="flex">
         <%= render 'shared/avatar_link', object: @post %>
       </div>
-      <div class="border-t flex items-center">
-        <%= image_tag @post.rakuten_toyimage %>
-        <div class="btn btn-primary"><i class="fa-sharp fa-solid fa-cart-shopping mr-2"></i><%= link_to "商品を見に行く", @post.netshop_link %></div>
-      </div>
+
+      <!-- 商品リンク -->
+      <% if @post.rakuten_toyimage.present? %>
+        <div class="border-t flex items-center">
+          <%= image_tag @post.rakuten_toyimage %>
+          <div class="btn btn-primary"><i class="fa-sharp fa-solid fa-cart-shopping mr-2"></i><%= link_to "商品を見に行く", @post.netshop_link %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
