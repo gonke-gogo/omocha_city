@@ -14,7 +14,7 @@ ja:
         avatar: 'プロフィール画像'
       post:
         toy_name: 'おもちゃの名前'
-        content: '本文'
+        content: '本文(特徴や使い方、感想などを書いてください！)'
         toy_image: 'おもちゃの写真'
         toy_movie: 'おもちゃの動画'
         category: 'カテゴリー(任意)'
