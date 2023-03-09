@@ -60,6 +60,6 @@
     </nav>
   </div>
 </div>
-<% if current_page?(posts_path) || current_page?(post_path(params[:id])) %>
+<% if current_page?(posts_path) %>
   <%= render '/posts/search_form', url: posts_path %>
 <% end %>

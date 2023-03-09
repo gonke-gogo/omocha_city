@@ -45,20 +45,20 @@
 }
 
 .top-wrapper {
-  background-image: image-url("images/colorful-kids-toys.jpg");
+  background-image: url("colorful-kids-toys.jpg");
   background-size: cover;
-  min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 100px);
   position: relative;
-  background-position: center;
+  background-position: 50% 80%;
 }
 .top-wrapper .top-inner-text {
   position: absolute;
   top: 50%;
-  left: 27%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #0f0f01;
 }
 .top-wrapper .top-logo {
@@ -68,9 +68,8 @@
   width: 150px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 780px) {
   .top-wrapper {
-    background-image: image-url("mobile/mobile_top.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 200px;
@@ -79,11 +78,14 @@
   .top-wrapper .top-inner-text {
     font-size: 0.875rem;
     top: 62%;
-    left: 32%;
+    left: 50%;
   }
   .top-wrapper .top-logo {
     top: 30%;
     left: 23%;
     width: 50px;
   }
+}
+.title {
+  font-family: "Nico Moji";
 }

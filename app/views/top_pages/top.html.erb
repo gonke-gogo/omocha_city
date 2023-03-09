@@ -55,11 +55,7 @@
   </div>
 </div>
 
-<% if logged_in? %>
-  <div class="text-center mb-4">
-    <%= link_to 'おもちゃを投稿する', toys_search_path,  { class: "btn btn-primary" } %>
-  </div>
-<% else %>
+<% unless logged_in? %>
   <ul class="flex justify-center mb-5">
     <li class="text-gray-700 text-center px-4  m-2 rounded">
       <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
