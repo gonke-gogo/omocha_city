@@ -82,7 +82,7 @@
   </div>
 </div>
 
-<% unless current_page?(toys_search_path) || current_page?(new_post_path) || current_page?(root_path) %>
+<% if current_page?(posts_path) || current_page?(post_path(params[:id])) %>
   <div class="text-center">
     <% unless current_page?(favorites_posts_path) %>
       <%= render '/posts/search_form', url: posts_path %>
