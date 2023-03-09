@@ -25,6 +25,11 @@
     <main class="container mx-auto" style="padding-top: 70px;">
       <% if logged_in? %>
         <%= render 'shared/header' %>
+        <div style="position: fixed; right: 4rem; bottom: 2rem; z-index: 99;">
+          <%= link_to new_post_path, { class: "btn btn-primary text-white text-xl" } do %>
+            投稿<i class="fa-regular fa-pen-to-square ml-2"></i>
+          <% end %>
+        </div>
       <% else %>
         <%= render 'shared/before_login_header' %>
       <% end %>
