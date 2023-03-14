@@ -7,7 +7,7 @@
     <div class="p-6 flex flex-col justify-start">
       <!-- おもちゃの名前とお気に入りボタン -->
       <div class="flex items-center">
-        <h5 class="text-gray-900 text-xl font-bold mb-2 mr-2"><%= @post.toy_name %></h5>
+        <p class="text-gray-900 text-xl font-bold mb-2 mr-2 break-words"><%= @post.toy_name %></p>
         <%= render 'modal' %>            
         <div class="mb-1">
           <% if logged_in? %>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- 本文 -->
-      <p class="text-gray-700 text-base mb-2">
+      <p class="text-gray-700 text-base mb-2 break-words">
         <%= simple_format(@post.content) %>      
       </p>
       <!-- カテゴリ -->
