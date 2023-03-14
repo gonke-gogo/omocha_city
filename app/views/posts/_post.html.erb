@@ -1,7 +1,7 @@
 <%= link_to (post_path(id: post.id)), class: "hover:opacity-75" do %>
   <div class="card card-compact w-80 bg-base-100 shadow-xl  mt-3 ">
       <%= image_tag post.toy_image_url, class:"h-56  p-2 m-auto object-cover", size: '300x200' %>
-    <div class="card-body h-40">
+    <div class="card-body h-56">
       <h2 class="card-title"><%= post.toy_name %></h2>
       <% unless post.categories.blank? %>
         <div class="flex flex-wrap">
