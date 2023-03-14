@@ -9,9 +9,13 @@
       <div class="flex items-center">
         <h5 class="text-gray-900 text-xl font-bold mb-2 mr-2"><%= @post.toy_name %></h5>
         <%= render 'modal' %>            
-        <div class="pt-0.5">
-          <% unless logged_in? && current_user.own?(@post) %>
-            <%= render 'favorite_button', post: @post if logged_in? %>
+        <div class="mb-1">
+          <% if logged_in? %>
+            <%= render 'favorite_button', post: @post %>
+            <%= @post.favorites.count %>
+          <% else %>
+            <i class="fa-regular fa-heart ml-3"></i>
+            <%= @post.favorites.count %>
           <% end %>
         </div>
       </div>
