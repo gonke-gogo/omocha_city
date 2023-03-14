@@ -11,11 +11,15 @@
         <%= render 'modal' %>            
         <div class="mb-1">
           <% if logged_in? %>
-            <%= render 'favorite_button', post: @post %>
-            <%= @post.favorites.count %>
+            <div class="w-12" style="width: 3rem;">
+              <%= render 'favorite_button', post: @post %>
+              <%= @post.favorites.count %>
+            </div>
           <% else %>
-            <i class="fa-regular fa-heart ml-3"></i>
-            <%= @post.favorites.count %>
+            <div class="w-12" style="width: 3rem;">
+              <i class="fa-regular fa-heart ml-3"></i>
+              <%= @post.favorites.count %>
+            </div>
           <% end %>
         </div>
       </div>
