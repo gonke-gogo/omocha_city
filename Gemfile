@@ -83,6 +83,9 @@ gem 'mini_magick'
 gem 'sitemap_generator'
 gem 'whenever', require: false
 
+# メタタグ, OGP
+gem "meta-tags"
+
 gem 'pry-rails'
 gem 'faker'
 gem 'rails-i18n'
