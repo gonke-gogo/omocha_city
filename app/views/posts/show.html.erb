@@ -57,8 +57,11 @@
           </div>
           <% end %>
       <div class="text-gray-600 text-xs flex items-center"><i class="fa-solid fa-calendar-days mr-1"></i>投稿日：<%= l @post.created_at, format: :long  %></div>
-      <div class="flex">
+      <div class="flex  items-center">
         <%= render 'shared/avatar_link', object: @post %>
+        <% if current_user.own?(@post) %>
+          <%= render 'twitter', post: @post %>
+        <% end %>
       </div>
 
       <!-- 商品リンク -->
