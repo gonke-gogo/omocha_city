@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   private
-  
+
   def not_authenticated
-    redirect_to login_path, warning: "ログインしてください"
+    redirect_to login_path, warning: 'ログインしてください'
   end
 
   def target_age_all
@@ -23,12 +23,13 @@ class ApplicationController < ActionController::Base
     @q = Post.ransack(params[:q])
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
+      @posts = @category.posts.includes(%i[user categories target_ages]).order(created_at: :desc).page(params[:page])
     elsif params[:target_age_id]
       @target_age = TargetAge.find(params[:target_age_id])
-      @posts = @target_age.posts.includes([:user, :target_ages]).order(created_at: :desc).page(params[:page])
+      @posts = @target_age.posts.includes(%i[user target_ages]).order(created_at: :desc).page(params[:page])
     else
-      @posts = @q.result(distinct: true).includes([:user, :categories, :target_ages]).order(created_at: :desc).page(params[:page])
+      @posts = @q.result(distinct: true).includes(%i[user categories
+                                                     target_ages]).order(created_at: :desc).page(params[:page])
     end
   end
 end

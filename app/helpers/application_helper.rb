@@ -21,12 +21,12 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: default_image_url, 
+        image: default_image_url,
         local: 'ja-JP'
       },
       twitter: {
-        card: 'summary_large_image', 
-        site: '@', 
+        card: 'summary_large_image',
+        site: '@',
         image: default_image_url
       }
     }

@@ -3,7 +3,7 @@ class OthersProfilesController < ApplicationController
   before_action :category_all, only: %i[show edit others_post]
   before_action :target_age_all, only: %i[show edit others_post]
   before_action :set_user, only: %i[show others_post]
-  
+
   def show; end
 
   def others_post
