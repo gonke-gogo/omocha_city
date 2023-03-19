@@ -20,7 +20,7 @@
 
 # 毎日 8:00 にサイトマップを更新
 require File.expand_path(File.dirname(__FILE__) + '/environment')
-rails_env = ENV['RAILS_ENV'] || :production 
+rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 every 1.day, at: '8:00 am' do

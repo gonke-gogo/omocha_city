@@ -1,11 +1,9 @@
 class ToysController < ApplicationController
   before_action :require_login
-  
+
   def search
-    begin
-      @toys = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword]) if params[:keyword].present?
-    rescue StandardError => e
-      render :search, status: :unprocessable_entity
-    end
+    @toys = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword]) if params[:keyword].present?
+  rescue StandardError => e
+    render :search, status: :unprocessable_entity
   end
 end

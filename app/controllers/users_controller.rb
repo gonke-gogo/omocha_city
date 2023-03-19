@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :category_all, only: %i[new create followings followers]
   before_action :target_age_all, only: %i[new create followings followers]
   before_action :set_user, only: %i[followings followers]
-  
+
   def new
     @user = User.new
   end

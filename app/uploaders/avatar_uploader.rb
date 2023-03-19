@@ -1,6 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
- 
+
   if Rails.env.production?
     storage :fog
   else
@@ -10,13 +10,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
+
   def default_url
     'default.jpg'
   end
 
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   process resize_to_fit: [1000, 1000]
@@ -29,5 +29,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
       img
     end
   end
-
 end

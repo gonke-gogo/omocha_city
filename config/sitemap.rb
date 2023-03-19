@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.omocha-city.site"
+SitemapGenerator::Sitemap.default_host = 'https://www.omocha-city.site'
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -17,11 +17,11 @@ SitemapGenerator::Sitemap.create do
   #
   # Add '/posts'
   #
-    add posts_path, :priority => 0.7, :changefreq => 'daily'
+  add posts_path, priority: 0.7, changefreq: 'daily'
   #
   # Add all articles:
   #
-    Post.find_each do |post|
-      add post_path(post), :lastmod => post.updated_at
-    end
+  Post.find_each do |post|
+    add post_path(post), lastmod: post.updated_at
+  end
 end

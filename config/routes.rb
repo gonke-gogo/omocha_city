@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     end
   end
   resource :profile, only: %i[show edit update]
-  resources :others_profiles, path: 'profile',only: %i[show] do
+  resources :others_profiles, path: 'profile', only: %i[show] do
     member do
-     get :others_post, path: 'posts'
+      get :others_post, path: 'posts'
     end
   end
 end

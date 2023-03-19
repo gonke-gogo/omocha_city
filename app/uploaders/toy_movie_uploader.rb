@@ -12,7 +12,6 @@ class ToyMovieUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w(jpg jpeg gif png MOV wmv mp4)
+    %w[jpg jpeg gif png MOV wmv mp4]
   end
-  
 end

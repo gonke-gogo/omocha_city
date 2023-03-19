@@ -9,19 +9,19 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     # posts/newへのURI直打ちを制限
-    if params[:toy].present?
-      @rakuten_name = params[:toy]['itemName']
-      @rakuten_url = params[:toy]['itemUrl']
-      @rakuten_image = params[:toy]['mediumImageUrls'][0]
-    end
+    return unless params[:toy].present?
+
+    @rakuten_name = params[:toy]['itemName']
+    @rakuten_url = params[:toy]['itemUrl']
+    @rakuten_image = params[:toy]['mediumImageUrls'][0]
   end
-  
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path, success: "おもちゃが投稿されました！"
+      redirect_to posts_path, success: 'おもちゃが投稿されました！'
     else
-      flash.now[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = '投稿に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, success: "投稿を編集しました。"
+      redirect_to @post, success: '投稿を編集しました。'
     else
       flash.now[:error] = '編集に失敗しました'
       render :edit, status: :unprocessable_entity
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
     respond_to do |format|
-      format.html { redirect_to posts_path, warning: "投稿を削除しました", status: :see_other }
+      format.html { redirect_to posts_path, warning: '投稿を削除しました', status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -63,7 +63,8 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, :shop_link, :netshop_link, :rakuten_toyname, :rakuten_toyimage, category_ids: [], target_age_ids: [])
+    params.require(:post).permit(:toy_name, :content, :toy_image, :toy_image_cache, :toy_movie, :shop_link,
+                                 :netshop_link, :rakuten_toyname, :rakuten_toyimage, category_ids: [], target_age_ids: [])
   end
 
   def set_post
@@ -71,9 +72,8 @@ class PostsController < ApplicationController
   end
 
   def new_post_access
-    unless @rakuten_name.present?
-      redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
-    end
-  end
+    return if @rakuten_name.present?
 
+    redirect_to toys_search_path, warning: '投稿したいおもちゃを検索してください'
+  end
 end
