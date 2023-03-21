@@ -1,6 +1,7 @@
-
-<% if current_user.favorite?(post) %>
-  <%= render 'unfavorite', { post: post } %>
-<% else %>
-  <%= render 'favorite', { post: post } %>
-<% end %>
+<div id="favorite_button_<%= post.id %>">
+  <% if current_user.favorite?(post) %>
+    <%= render 'favorites/unfavorite', { post: post } %>
+  <% else %>
+    <%= render 'favorites/favorite', { post: post } %>
+  <% end %>
+</div>

@@ -15,12 +15,12 @@
           <% if logged_in? %>
             <div class="w-12" style="width: 3rem;">
               <%= render 'favorite_button', post: @post %>
-              <%= @post.favorites.count %>
+              <%= render 'favorite_count', post: @post %>
             </div>
           <% else %>
             <div class="w-12" style="width: 3rem;">
               <i class="fa-regular fa-heart ml-3"></i>
-              <%= @post.favorites.count %>
+              <%= render 'favorite_count', post: @post %>
             </div>
           <% end %>
         </div>
