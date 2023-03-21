@@ -13,12 +13,12 @@
         <%= render 'modal' %>            
         <div class="mb-1">
           <% if logged_in? %>
-            <div class="w-12" style="width: 3rem;">
+            <div class="w-12 flex items-center">
               <%= render 'favorite_button', post: @post %>
               <%= render 'favorite_count', post: @post %>
             </div>
           <% else %>
-            <div class="w-12" style="width: 3rem;">
+            <div class="w-12 flex items-center">
               <i class="fa-regular fa-heart ml-3"></i>
               <%= render 'favorite_count', post: @post %>
             </div>
