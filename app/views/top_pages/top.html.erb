@@ -55,8 +55,9 @@
   </div>
 </div>
 
+<%# ログイン・新規登録ボタン %>
 <% unless logged_in? %>
-  <ul class="flex justify-center mb-5">
+  <ul class="flex justify-center mb-10">
     <li class="text-gray-700 text-center px-4  m-2 rounded">
       <%= link_to 'ログインする', login_path,  { class: "btn btn-primary" } %>
     </li>
@@ -64,4 +65,27 @@
       <%= link_to '新規登録する', new_user_path, { class: "btn btn-primary" }%>
     </li>
   </ul>
+<% end %>
+
+<%# 最新記事  %>
+<% if @post.present? %>
+  <h2 class="max-w-lg mb-6 font-sans text-xl sm:text-xl md:text-2xl text-center  font-bold leading-none tracking-tight text-gray-900 lg:text-3xl mx-auto"><i class="fa-solid fa-bullhorn"></i> 最新の投稿</h2>
+  <div class="flex justify-center mb-10">
+    <%= render @post %>
+  </div>
+<% end %>
+
+<%# 人気おもちゃ %>
+<% if @all_ranks.present? %>
+  <h2 class="max-w-lg mb-6 font-sans text-xl sm:text-xl md:text-2xl text-center  font-bold leading-none tracking-tight text-gray-900 lg:text-3xl mx-auto"><i class="fa-solid fa-crown"></i>人気のおもちゃ</h2>
+  <div class="grid gap-8 row-gap-8 lg:grid-cols-3 mb-10">
+    <% @all_ranks.each.with_index(1) do |post, i| %>
+    <div class="text-center mx-auto">
+      <div class="font-bold mb-2">
+        <%= raw post.trophy(i) %> <%= "#{i}位" %>
+      </div>
+      <%= render partial: "posts/post", locals: {post: post} %>
+    </div>
+    <% end %>
+  </div>
 <% end %>

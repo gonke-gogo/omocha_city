@@ -14,4 +14,14 @@ class Post < ApplicationRecord
 
   enum shop_link: { toyzarasu: 1, nisimatsuya: 2, akachanhonpo: 3, birthday: 4, yodobashicamera: 5, bigcamera: 6,
                     toyplanet: 7, hakuhinkantoypark: 8, net: 90, others: 100 }
+
+  def trophy(i)
+    if i == 1
+      '<i class="fa-solid fa-trophy" style="color: #dfd811;"></i>'
+    elsif i == 2
+      '<i class="fa-solid fa-trophy" style="color: #999999;"></i>'
+    else
+      '<i class="fa-solid fa-trophy" style="color: #936b34;"></i>'
+    end
+  end
 end
