@@ -55,6 +55,15 @@
   </div>
 </div>
 
+<h2 class="max-w-lg mb-6 font-sans text-xl sm:text-xl md:text-2xl text-center  font-bold leading-none tracking-tight text-gray-900 lg:text-3xl mx-auto">人気おもちゃ</h2>
+<div class="grid gap-8 row-gap-8 lg:grid-cols-3">
+  <% @all_ranks.each do |post| %>
+  <div class="text-center mx-auto">
+    <%= render partial: "posts/post", locals: {post: post} %>
+  </div>
+  <% end %>
+</div>
+
 <% unless logged_in? %>
   <ul class="flex justify-center mb-5">
     <li class="text-gray-700 text-center px-4  m-2 rounded">
