@@ -3,7 +3,7 @@
     <div class="flex flex-col  md:flex-row max-w-xs rounded-lg bg-white shadow-lg">
       <!-- おもちゃの写真 -->
       <%= image_tag post.toy_image.url, class: 'w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg md:w-44' %>
-      <div class="p-6 flex flex-col justify-start md:max-w-xs md:w-80" style="max-width: 400px;">
+      <div class="p-6 flex flex-col justify-start md:max-w-lg md:w-80" style="max-width: 400px;">
         <!-- おもちゃの名前とお気に入りボタン -->
         <div class="flex items-center">
           <p class="text-gray-900 text-xl font-bold mb-2 mr-2 break-words"><%= post.toy_name %></p>           
