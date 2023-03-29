@@ -30,6 +30,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    same_category_posts = @post.categories.flat_map { |category| category.posts.where.not(id: @post.id) }
+    same_age_posts = @post.target_ages.flat_map { |target_age| target_age.posts.where.not(id: @post.id) }
+    combined_posts = (same_category_posts + same_age_posts).uniq
+    @random_post = combined_posts.sample
   end
 
   def edit; end

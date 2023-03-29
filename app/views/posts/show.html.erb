@@ -90,3 +90,10 @@
     <%= render 'comments/comments', { comments: @comments } %>
   </div>
 </div>
+
+<% if @random_post.present? %>
+  <h3 class="text-center">\ 他のオススメおもちゃ<i class="fa-solid fa-gifts" style="color: #197a06;"></i> /</h3>
+  <%= link_to (post_path(id: @random_post.id)), class: "hover:opacity-75" do %>
+    <%= render partial: "same_type", locals: {post: @random_post} %>
+  <% end %>
+<% end %>
