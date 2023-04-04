@@ -8,12 +8,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    # posts/newへのURI直打ちを制限
-    return unless params[:toy].present?
-
-    @rakuten_name = params[:toy]['itemName']
-    @rakuten_url = params[:toy]['itemUrl']
-    @rakuten_image = params[:toy]['mediumImageUrls'][0]
+    if params[:toy]
+      @rakuten_name = params[:toy]['itemName']
+      @rakuten_url = params[:toy]['itemUrl']
+      @rakuten_image = params[:toy]['mediumImageUrls'][0]
+    end
   end
 
   def create
