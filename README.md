@@ -82,6 +82,7 @@
 - Heroku
 - AWS(S3)
 
-## ER図
-https://drive.google.com/file/d/1PTqmzyZj1jhYdE5FbPsYM9NUNjMO-RVh/view?usp=sharing
+## テーブル設計・ER図
+![](https://i.gyazo.com/bfbac2e65e1b8538bde9b11d4b3367b5.jpg)
+
 
