@@ -56,6 +56,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'capybara', '>= 3.26'
   gem 'factory_bot_rails'
 end
 
