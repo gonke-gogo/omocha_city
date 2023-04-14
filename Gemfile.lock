@@ -309,6 +309,11 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.8.6)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
     snaky_hash (2.0.1)
@@ -349,6 +354,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -388,6 +394,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0.0)
   rubocop
   rubocop-rails
+  selenium-webdriver
   sitemap_generator
   sorcery
   sprockets-rails
