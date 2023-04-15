@@ -25,6 +25,16 @@ RSpec.describe 'UserSessions', type: :system do
       end
     end
 
+    context '間違ったログイン情報が渡された場合' do
+      it 'ログインに失敗し、エラーメッセージが表示' do
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: 'wrong_password'
+        click_button 'ログイン'
+        expect(page).to have_content 'ログインに失敗しました'
+        expect(current_path).to eq login_path
+      end
+    end
+
   end
 
 end
