@@ -7,9 +7,20 @@ RSpec.describe 'Posts', type: :system do
     login_as(@user)
   end
 
-  fit 'おもちゃが正しく表示される' do
-    visit posts_path
-    expect(page).to have_content(@post.toy_name)
-    expect(page).to have_content(@post.content)
+  describe '画面表示' do
+    before do
+      visit posts_path
+    end
+
+    fit '一覧画面におもちゃが正しく表示される' do
+      expect(page).to have_content(@post.toy_name)
+      expect(page).to have_content(@post.content)
+    end
+    
+    fit '一覧ページから詳細ページへの移動' do
+      click_on @post.toy_name
+      expect(page).to have_content(@post.toy_name)
+      expect(page).to have_content(@post.content)
+    end
   end
 end
