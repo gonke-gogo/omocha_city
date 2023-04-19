@@ -31,10 +31,25 @@ RSpec.describe 'Posts', type: :system do
       expect(page).to have_content(@post.content)
     end
 
-    fit '詳細画面にて、ランダムに類似したおもちゃが表示されること' do
+    it '詳細画面にて、ランダムに類似したおもちゃが表示されること' do
       visit post_path(@post)
       expect(page).to have_content(@related_post.toy_name)
       expect(page).to have_selector("img[src$='#{@related_post.toy_image.url}']")
+    end
+  end
+
+  describe '投稿の編集' do
+    context "正しく値が入力された場合" do
+      fit '投稿が編集できる' do
+        login_as(@user)
+        visit edit_post_path(@post)
+        fill_in 'おもちゃの名前', with: 'Updated toy name'
+        fill_in '本文', with: 'Updated content'
+        click_button '投稿する'
+        expect(page).to have_content('投稿を編集しました')
+        expect(page).to have_content('Updated toy name')
+        expect(page).to have_content('Updated content')
+      end
     end
   end
 end
