@@ -39,16 +39,29 @@ RSpec.describe 'Posts', type: :system do
   end
 
   describe '投稿機能' do
+    before do
+      login_as(@user)
+      visit new_post_path 
+    end
     context "正しく値が入力された場合" do
-      fit "投稿ができる" do
-        login_as(@user)
-        visit new_post_path 
+      it "投稿ができる" do
         fill_in 'おもちゃの名前', with: 'Created toy name'
         fill_in '本文', with: 'Created content'
         click_button '投稿する'
         expect(page).to have_content('おもちゃが投稿されました！')
         expect(page).to have_content('Created toy name')
         expect(page).to have_content('Created content')
+      end
+    end
+    
+    context "必須項目が入力されなかった場合" do
+      fit "投稿に失敗する" do
+        fill_in 'おもちゃの名前', with: ''
+        fill_in '本文', with: ''
+        click_button '投稿する'
+        expect(page).to have_content('投稿に失敗しました')
+        expect(page).to have_content('おもちゃの名前を入力してください')
+        expect(page).to have_content('本文(特徴や使い方、感想などを書いてください！)を入力してください')
       end
     end
   end
