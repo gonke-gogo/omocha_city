@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit destroy update]
-  before_action :category_all, only: %i[index new show edit create favorites myselfs]
-  before_action :target_age_all, only: %i[index new show edit create favorites myselfs]
+  before_action :category_all, only: %i[index new show edit create update favorites myselfs]
+  before_action :target_age_all, only: %i[index new show edit create update favorites myselfs]
 
   def index; end
 
